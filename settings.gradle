@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "Animori"
 include ':app'
 include ':network'
+include ':core'
+include ':navigation'
