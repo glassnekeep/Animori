@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -32,12 +33,27 @@ android {
 
 dependencies {
 
+    implementation 'androidx.window:window:1.0.0'
+    def lifecycle_version = "2.5.1"
+    def material_version = "1.0.0-beta03"
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
 
     //Compose, these dependencies are transited to other modules
+    api "androidx.compose.ui:ui:$compose_version"
+    api "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    api 'androidx.activity:activity-compose:1.6.0'
+
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    api 'androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0-alpha02'
+//    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     api 'androidx.compose.material:material-icons-core:1.2.1'
+    api "androidx.compose.material3:material3:$material_version"
+    api "androidx.compose.material3:material3-window-size-class:$material_version"
+    api  "androidx.compose.material:material-icons-extended:$compose_version"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
