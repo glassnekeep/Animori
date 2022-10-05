@@ -14,37 +14,40 @@ import javax.inject.Qualifier
 
 @Module
 interface MainClientModule {
-    @Provides
-    @MainBaseUrl
-    fun provideBaseUrl(): String = "http://google.com/"
 
-    @Provides
-    fun provideKtorClient(): HttpClient {
-        return HttpClient(Android) {
-            install(ContentNegotiation) {
-                json()
-            }
-            defaultRequest {
-                url("")
-            }
-            install(HttpTimeout) {
-                requestTimeoutMillis = 15000
-            }
-            install(HttpRequestRetry) {
-                maxRetries = 10
-                retryIf { httpRequest, httpResponse ->
-                    !httpResponse.status.isSuccess()
+    companion object {
+        @Provides
+        @MainBaseUrl
+        fun provideBaseUrl(): String = "http://google.com/"
+
+        @Provides
+        fun provideKtorClient(): HttpClient {
+            return HttpClient(Android) {
+                install(ContentNegotiation) {
+                    json()
                 }
-                retryOnExceptionIf { httpRequestBuilder, throwable ->
-                    throwable is ServerResponseException || throwable is NetworkErrorException
+                defaultRequest {
+                    url("")
                 }
-                retryOnServerErrors(maxRetries)
+                install(HttpTimeout) {
+                    requestTimeoutMillis = 15000
+                }
+                install(HttpRequestRetry) {
+                    maxRetries = 10
+                    retryIf { httpRequest, httpResponse ->
+                        !httpResponse.status.isSuccess()
+                    }
+                    retryOnExceptionIf { httpRequestBuilder, throwable ->
+                        throwable is ServerResponseException || throwable is NetworkErrorException
+                    }
+                    retryOnServerErrors(maxRetries)
+                }
+                install(Logging) {
+                    logger = Logger.ANDROID
+                    level = LogLevel.ALL
+                }
+                expectSuccess = true
             }
-            install(Logging) {
-                logger = Logger.ANDROID
-                level = LogLevel.ALL
-            }
-            expectSuccess = true
         }
     }
 }
