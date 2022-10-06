@@ -3,8 +3,10 @@ package ru.glassnekeep.animori
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
@@ -27,6 +29,9 @@ import ru.glassnekeep.core.isBookPosture
 import ru.glassnekeep.core.isSeparating
 
 class MainActivity : ComponentActivity() {
+
+    private val viewModel: HomeScreenViewModel by viewModels()
+
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +54,16 @@ class MainActivity : ComponentActivity() {
             AnimoriTheme {
                 val windowSize = calculateWindowSizeClass(this)
                 val devicePosture by devicePictureFlow.collectAsState()
-                val uiState by viewModel
-
+                val uiState by viewModel.uiState.collectAsState()
+                App(
+                    windowSize = windowSize,
+                    foldingDevicePosture = devicePosture,
+                    replyHomeUIState = uiState,
+                    closeDetailScreen = { viewModel.closeDetailScreen() },
+                    navigateToDetail = { emailId, pane ->
+                        viewModel.
+                    }
+                )
             }
         }
     }
