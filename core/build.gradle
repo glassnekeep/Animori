@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace 'ru.glassnekeep.core'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         minSdk 24
-        targetSdk 32
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -33,12 +33,14 @@ android {
 
 dependencies {
 
-    implementation 'androidx.window:window:1.0.0'
     def lifecycle_version = "2.5.1"
     def material_version = "1.0.0-beta03"
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
+
+    //Window
+    api 'androidx.window:window:1.0.0'
 
     //Compose, these dependencies are transited to other modules
     api "androidx.compose.ui:ui:$compose_version"

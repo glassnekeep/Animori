@@ -159,7 +159,7 @@ private fun NavigationWrapper(
             },
             drawerState = drawerState
         ) {
-            ReplyAppContent(
+            AppContent(
                 navigationType = navigationType,
                 contentType = contentType,
                 navigationContentPosition = navigationContentPosition,
@@ -241,13 +241,13 @@ private fun ReplyNavHost(
         startDestination = Routes.HOME,
     ) {
         composable(Routes.HOME) {
-            ReplyInboxScreen(
-                contentType = contentType,
-                replyHomeUIState = replyHomeUIState,
-                navigationType = navigationType,
-                closeDetailScreen = closeDetailScreen,
-                navigateToDetail = navigateToDetail,
-            )
+//            ReplyInboxScreen(
+//                contentType = contentType,
+//                replyHomeUIState = replyHomeUIState,
+//                navigationType = navigationType,
+//                closeDetailScreen = closeDetailScreen,
+//                navigateToDetail = navigateToDetail,
+//            )
         }
         composable(Routes.HOME) {
             TODO()
@@ -265,8 +265,8 @@ private fun ReplyNavHost(
 }
 
 data class ReplyHomeUIState(
-    val emails: List<Email> = emptyList(),
-    val selectedEmail: Email? = null,
+    val emails: List<Int> = emptyList(),
+    val selectedEmail: Int? = null,
     val isDetailOnlyOpen: Boolean = false,
     val loading: Boolean = false,
     val error: String? = null
