@@ -8,7 +8,7 @@ import ru.glassnekeep.core.Destinations
 import ru.glassnekeep.home_feature.HomeEntry
 import javax.inject.Inject
 
-class HomeEntryImpl @Inject constructor(): HomeEntry {
+class HomeEntryImpl @Inject constructor(): HomeEntry() {
     override fun NavGraphBuilder.navigation(
         navController: NavHostController,
         destinations: Destinations

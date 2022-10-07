@@ -266,7 +266,7 @@ private fun ReplyNavHost(
 private fun MainActivityNavHost(
     navController: NavHostController
 ) {
-    NavHost(navController = navController, startDestination = Depe)
+
 }
 
 data class ReplyHomeUIState(

@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
                     replyHomeUIState = uiState,
                     closeDetailScreen = { viewModel.closeDetailScreen() },
                     navigateToDetail = { emailId, pane ->
-                        viewModel.
+                        //viewModel.
                     }
                 )
             }

@@ -19,6 +19,8 @@
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/profile-feature" />
             <option value="$PROJECT_DIR$/profile-feature-impl" />
+            <option value="$PROJECT_DIR$/user-data" />
+            <option value="$PROJECT_DIR$/user-data-impl" />
           </set>
         </option>
       </GradleProjectSettings>

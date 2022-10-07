@@ -7,6 +7,10 @@ import androidx.navigation.navigation
 import ru.glassnekeep.core.Destinations
 import ru.glassnekeep.core.injectedViewModel
 import ru.glassnekeep.profile_feature.ProfileEntry
+import ru.glassnekeep.profile_feature_impl.di.DaggerProfileComponent
+import ru.glassnekeep.profile_feature_impl.user_profile.di.DaggerUserProfileComponent
+import ru.glassnekeep.user_data.LocalUserDataProvider
+import ru.glassnekeep.user_data.UserDataProvider
 import javax.inject.Inject
 
 class ProfileEntryImpl @Inject constructor() : ProfileEntry() {
@@ -18,10 +22,15 @@ class ProfileEntryImpl @Inject constructor() : ProfileEntry() {
             composable(route = featureRoute, arguments) {
                 val userId = it.arguments?.getString(ARG_USER_ID)
                 val viewModel = injectedViewModel {
-                    DaggerUser
+                    DaggerUserProfileComponent.factory()
+                        .create(buildRootProfileComponent(LocalUserDataProvider.current), userId)
+                        .viewModel
                 }
             }
         }
     }
+
+    private fun buildRootProfileComponent(userDataProvider: UserDataProvider) =
+        DaggerProfileComponent.builder().userDataProvider(userDataProvider).build()
 
 }

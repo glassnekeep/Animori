@@ -8,8 +8,8 @@ import ru.glassnekeep.core.di.FeatureEntryKey
 
 @Module
 interface HomeEntryModule {
-    @Binds
-    @HomeScreenScope
-    @IntoMap
-    @FeatureEntryKey(Home)
+//    @Binds
+//    @HomeScreenScope
+//    @IntoMap
+//    @FeatureEntryKey(Home)
 }

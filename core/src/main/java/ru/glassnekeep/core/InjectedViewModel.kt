@@ -7,7 +7,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 inline fun <reified VM: ViewModel> injectedViewModel(
-    key: String,
+    key: String? = null,
     crossinline viewModelInstanceCreator: () -> VM
 ) : VM = viewModel(
     key = key,
