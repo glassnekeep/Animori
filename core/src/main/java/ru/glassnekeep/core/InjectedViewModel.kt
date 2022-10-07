@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-inline fun <reified VM: ViewModel> injectedViewModel(
+inline fun <reified VM : ViewModel> injectedViewModel(
     key: String? = null,
     crossinline viewModelInstanceCreator: () -> VM
-) : VM = viewModel(
+): VM = viewModel(
     key = key,
     factory = object : ViewModelProvider.Factory {
         override fun <VM : ViewModel> create(modelClass: Class<VM>): VM {

@@ -94,4 +94,5 @@ dependencies {
 
     implementation project(":core")
     implementation project(":navigation")
+    implementation project(":profile-feature-impl")
 }

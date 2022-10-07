@@ -248,16 +248,15 @@ private fun ReplyNavHost(
 //            )
         }
         composable(Routes.HOME) {
-            TODO()
+
         }
         composable(Routes.SEARCH) {
-            TODO()
+
         }
         composable(Routes.MYLIST) {
-            TODO()
         }
         composable(Routes.PROFILE) {
-            TODO()
+
         }
     }
 }
