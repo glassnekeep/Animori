@@ -52,6 +52,6 @@ dependencies {
 
     implementation project(":core")
 //    implementation project(":network")
-    implementation project(":profile-feature")
-    implementation project(":user-data")
+    api project(":profile-feature")
+    api project(":user-data")
 }
