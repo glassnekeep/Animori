@@ -40,18 +40,19 @@ class ProfileEntryImpl @Inject constructor() : ProfileEntry() {
             composable(route = featureRoute, arguments) {
                 val userId = it.arguments?.getString(ARG_USER_ID)
 
-//                val viewModel = injectedViewModel {
-//                    DaggerUserProfileComponent.factory()
-//                        .create(buildRootProfileComponent(LocalUserDataProvider.current), userId)
-//                        .viewModel
-//                }
-//                UserProfileScreen(navController, viewModel)
+                val viewModel = injectedViewModel {
+                    DaggerUserProfileComponent.factory()
+                        .create(
+                            buildRootProfileComponent(LocalUserDataProvider.current), userId)
+                        .viewModel
+                }
+                UserProfileScreen(navController, viewModel)
             }
         }
     }
 
-    private fun buildRootProfileComponent(profileDataProvider: ProfileDataProvider) =
-        DaggerProfileComponent.builder().profileDataProvider(profileDataProvider).build()
+    private fun buildRootProfileComponent(userDataProvider: UserDataProvider) =
+        DaggerProfileComponent.builder().userDataProvider(userDataProvider).build()
 
 }
 

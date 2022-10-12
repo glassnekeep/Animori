@@ -1,5 +1,6 @@
 package ru.glassnekeep.profile_feature_impl.user_profile.di
 
+import androidx.compose.runtime.Composable
 import dagger.BindsInstance
 import dagger.Component
 import ru.glassnekeep.profile_feature_impl.di.ProfileComponent

@@ -11,8 +11,15 @@ class AnimoriApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+//        appProvider = DaggerAppComponent.builder()
+//            .profileDataProvider(DaggerProfileComponent.builder().build()).build()
         appProvider = DaggerAppComponent.builder()
-            .profileDataProvider(DaggerProfileComponent.builder().build()).build()
+            .profileDataProvider(
+                DaggerProfileComponent.builder()
+                    .userDataProvider(
+                        DaggerUserDataComponent.builder().build()
+                ).build()
+            ).build()
     }
 }
 

@@ -8,7 +8,7 @@ import ru.glassnekeep.user_data.UserDataProvider
 
 @ProfileScope
 @Component(
-    dependencies = [ProfileDataProvider::class],
+    dependencies = [UserDataProvider::class],
     modules = [ProfileModule::class]
 )
-interface ProfileComponent: ProfileProvider, ProfileDataProvider
+interface ProfileComponent: ProfileDataProvider
