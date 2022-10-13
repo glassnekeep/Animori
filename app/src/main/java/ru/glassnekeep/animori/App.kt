@@ -14,16 +14,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
-import ru.glassnekeep.core.ContentType
-import ru.glassnekeep.core.DevicePosture
-import ru.glassnekeep.core.NavigationContentPosition
-import ru.glassnekeep.core.NavigationType
+import ru.glassnekeep.core.*
 import ru.glassnekeep.navigation.*
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -250,18 +248,24 @@ private fun ReplyNavHost(
 //            )
         }
         composable(Routes.HOME) {
-            TODO()
+
         }
         composable(Routes.SEARCH) {
-            TODO()
+
         }
         composable(Routes.MYLIST) {
-            TODO()
         }
         composable(Routes.PROFILE) {
-            TODO()
+
         }
     }
+}
+
+@Composable
+private fun MainActivityNavHost(
+    navController: NavHostController
+) {
+
 }
 
 data class ReplyHomeUIState(
@@ -271,4 +275,16 @@ data class ReplyHomeUIState(
     val loading: Boolean = false,
     val error: String? = null
 )
+
+//fun NavGraphBuilder.register(
+//    featureApi: FeatureApi,
+//    navController: NavHostController,
+//    modifier: Modifier
+//) {
+//    featureApi.registerGraph(
+//        navGraphBuilder = this,
+//        navController = navController,
+//        modifier = modifier
+//    )
+//}
 

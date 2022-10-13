@@ -53,12 +53,14 @@ dependencies {
     def lifecycle_version = "2.5.1"
     def room_version = "2.4.3"
     def work_version = "2.7.1"
+    def dagger_version = "2.44"
 
 
 
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -94,4 +96,5 @@ dependencies {
 
     implementation project(":core")
     implementation project(":navigation")
+    implementation project(":profile-feature-impl")
 }
