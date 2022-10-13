@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import ru.glassnekeep.animori.di.LocalAppProvider
 import ru.glassnekeep.core.find
@@ -20,8 +21,10 @@ fun Navigation() {
     val profileScreen = destinations.find<ProfileEntry>()
 
     Box(Modifier.fillMaxSize()) {
-        NavHost(navController, startDestination = profileScreen.featureRoute) {
+        NavHost(navController, startDestination = "home") {
+            composable("home") {
 
+            }
             with(profileScreen) {
                 navigation(navController, destinations)
             }
