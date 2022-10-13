@@ -7,8 +7,9 @@ import androidx.navigation.*
 import androidx.navigation.compose.composable
 import ru.glassnekeep.core.Destinations
 import ru.glassnekeep.profile_feature_impl.ProfileDataProvider
+import ru.glassnekeep.user_data.UserDataProvider
 
-interface AppProvider : ProfileDataProvider {
+interface AppProvider : ProfileDataProvider, UserDataProvider {
     val destinations: Destinations
 }
 

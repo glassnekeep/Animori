@@ -39,11 +39,10 @@ class ProfileEntryImpl @Inject constructor() : ProfileEntry() {
         navigation(startDestination = myProfileDestination(), route = "@profile") {
             composable(route = featureRoute, arguments) {
                 val userId = it.arguments?.getString(ARG_USER_ID)
-
+                val userDataProvider = LocalUserDataProvider.current
                 val viewModel = injectedViewModel {
                     DaggerUserProfileComponent.factory()
-                        .create(
-                            buildRootProfileComponent(LocalUserDataProvider.current), userId)
+                        .create(buildRootProfileComponent(userDataProvider), userId)
                         .viewModel
                 }
                 UserProfileScreen(navController, viewModel)
