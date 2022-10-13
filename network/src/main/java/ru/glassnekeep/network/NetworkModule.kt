@@ -10,22 +10,19 @@ import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
-import javax.inject.Qualifier
+import ru.glassnekeep.core.di.AppScope
 
 @Module
-interface MainClientModule {
+object NetworkModule {
     @Provides
-    @MainBaseUrl
-    fun provideBaseUrl(): String = "http://google.com/"
-
-    @Provides
+    @AppScope
     fun provideKtorClient(): HttpClient {
         return HttpClient(Android) {
             install(ContentNegotiation) {
                 json()
             }
             defaultRequest {
-                url("")
+                url("https://google.com")
             }
             install(HttpTimeout) {
                 requestTimeoutMillis = 15000

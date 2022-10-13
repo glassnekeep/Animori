@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">Home</string>
+    <string name="chats">Chats</string>
+    <string name="search">Search</string>
+    <string name="my_list">My List</string>
+    <string name="profile">Profile</string>
+    <string name="navigation_drawer">Navigation Drawer</string>
+    <string name="edit">Edit</string>
+    <string name="app_name">Animori</string>
+</resources>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Animori</string>
+      <string name="title_home">Home</string>
 </resources>
