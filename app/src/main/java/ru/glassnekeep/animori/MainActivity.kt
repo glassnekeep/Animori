@@ -38,7 +38,6 @@ class MainActivity : ComponentActivity() {
 
     private val viewModel: HomeScreenViewModel by viewModels()
 
-    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val devicePictureFlow = WindowInfoTracker.getOrCreate(this).windowLayoutInfo(this)
