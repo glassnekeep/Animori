@@ -31,7 +31,7 @@ abstract class ProfileEntry : AggregateFeatureEntry {
     /**
      * Builds destination to the profile page of current user.
      */
-    fun myProfileDestination(): String =
+    fun profileDestination(): String =
         "profile"
 
 

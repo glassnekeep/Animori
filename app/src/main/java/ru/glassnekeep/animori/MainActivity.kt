@@ -30,7 +30,6 @@ import ru.glassnekeep.animori.ui.theme.md_theme_light_inversePrimary
 import ru.glassnekeep.core.DevicePosture
 import ru.glassnekeep.core.isBookPosture
 import ru.glassnekeep.core.isSeparating
-import ru.glassnekeep.profile_feature.LocalProfileProvider
 import ru.glassnekeep.profile_feature_impl.LocalProfileDataProvider
 import ru.glassnekeep.user_data.LocalUserDataProvider
 

@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/profile-feature" />
             <option value="$PROJECT_DIR$/profile-feature-impl" />
+            <option value="$PROJECT_DIR$/shikimori" />
             <option value="$PROJECT_DIR$/user-data" />
           </set>
         </option>
