@@ -1,9 +1,9 @@
-package ru.glassnekeep.anilist.api.models
+package ru.glassnekeep.anilist.api.models.query
 
 import ru.glassnekeep.anilist.QueryParameter
 import ru.glassnekeep.anilist.api.enums.MediaTrendSort
 
-data class MediaTrend(
+data class MediaTrendQuery(
     val mediaId: Int? = null,
     val date: Int? = null,
     val trending: Int? = null,

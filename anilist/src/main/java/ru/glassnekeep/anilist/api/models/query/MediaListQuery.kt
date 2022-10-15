@@ -1,11 +1,11 @@
-package ru.glassnekeep.anilist.api.models
+package ru.glassnekeep.anilist.api.models.query
 
 import ru.glassnekeep.anilist.QueryParameter
 import ru.glassnekeep.anilist.api.enums.MediaListSort
 import ru.glassnekeep.anilist.api.enums.MediaListStatus
 import ru.glassnekeep.anilist.api.enums.MediaType
 
-data class MediaList(
+data class MediaListQuery(
     val id: Int? = null,
     val userId: Int? = null,
     val userName: String? = null,

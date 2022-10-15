@@ -1,9 +1,9 @@
-package ru.glassnekeep.anilist.api.models
+package ru.glassnekeep.anilist.api.models.query
 
 import ru.glassnekeep.anilist.QueryParameter
 import ru.glassnekeep.anilist.api.enums.AiringSort
 
-data class AiringSchedule(
+data class AiringScheduleQuery(
     val id: Int? = null,
     val mediaId: Int? = null,
     val episode: Int? = null,

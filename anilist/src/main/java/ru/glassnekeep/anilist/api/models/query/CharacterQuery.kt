@@ -1,9 +1,9 @@
-package ru.glassnekeep.anilist.api.models
+package ru.glassnekeep.anilist.api.models.query
 
 import ru.glassnekeep.anilist.QueryParameter
 import ru.glassnekeep.anilist.api.enums.CharacterSort
 
-data class Character(
+data class CharacterQuery(
     val id: Int? = null,
     val isBirthday: Boolean? = null,
     val search: String? = null,
