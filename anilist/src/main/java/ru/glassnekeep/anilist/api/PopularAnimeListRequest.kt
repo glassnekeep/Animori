@@ -14,8 +14,14 @@ val mediaQuery = MediaQuery(
 )
 
 fun make(mediaQuery: MediaQuery, title: String, variables: List<String>) {
-    var string = mediaQuery.toString().replace(Regex("List<a-zA-Z>+=null,? ?"), "")
-    //string = string.replace()
+    //var string = mediaQuery.toString().replace(Regex("List<a-zA-Z>+=null,? ?"), "")
+    var string = mediaQuery.toString()
+        .replace(Regex("[a-zA-Z]+=null,? ?"), "")
+        .replace(", )", ")")
+        .replace(Regex("=[0-9a-zA-Z]+,?"), "\n")
+        .replace("(", " {\n ")
 }
 
-
+fun basicMediaRequest(mediaQuery: MediaQuery) {
+    var string = mediaQuery.toString()
+}
