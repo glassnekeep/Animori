@@ -24,6 +24,11 @@ import androidx.window.layout.WindowInfoTracker
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import ru.glassnekeep.anilist.api.enums.MediaTitle
+import ru.glassnekeep.anilist.api.enums.MediaType
+import ru.glassnekeep.anilist.api.makeRequestString
+import ru.glassnekeep.anilist.api.models.domain.media.Media
+import ru.glassnekeep.anilist.api.models.query.MediaQuery
 import ru.glassnekeep.animori.di.LocalAppProvider
 import ru.glassnekeep.animori.ui.theme.AnimoriTheme
 import ru.glassnekeep.animori.ui.theme.md_theme_light_inversePrimary
@@ -39,6 +44,13 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val mediaQuery = MediaQuery(12125, type = MediaType.ANIME)
+        val response = Media(id = 0, title = MediaTitle.english)
+        println(makeRequestString(
+            query = mediaQuery,
+            response = response,
+            variables = emptyList()
+        ))
         val devicePictureFlow = WindowInfoTracker.getOrCreate(this).windowLayoutInfo(this)
             .flowWithLifecycle(this.lifecycle)
             .map { layoutInfo ->

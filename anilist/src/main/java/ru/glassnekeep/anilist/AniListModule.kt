@@ -1,6 +1,7 @@
 package ru.glassnekeep.anilist
 
 import android.accounts.NetworkErrorException
+import dagger.Module
 import dagger.Provides
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
@@ -12,6 +13,7 @@ import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import ru.glassnekeep.core.di.AppScope
 
+@Module
 object AniListModule {
     @AppScope
     @Provides
