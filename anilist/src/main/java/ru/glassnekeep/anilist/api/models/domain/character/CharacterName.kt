@@ -1,5 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.character
 
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
+
 data class CharacterName(
     val first: String? = null,
     val middle: String? = null,
@@ -9,4 +11,4 @@ data class CharacterName(
     val alternative: List<String>? = null,
     val alternativeSpoiler: List<String>? = null,
     val userPreferred: String? = null
-)
+): DomainModel

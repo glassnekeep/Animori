@@ -1,6 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.staff
 
 import ru.glassnekeep.anilist.api.FuzzyDate
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.character.CharacterConnection
 import ru.glassnekeep.anilist.api.models.domain.media.MediaConnection
 import ru.glassnekeep.anilist.api.models.domain.user.User
@@ -31,4 +32,4 @@ data class Staff(
     val submissionNotes: String? = null,
     val favourites: Int? = null,
     val modNotes: String? = null
-)
+): DomainModel

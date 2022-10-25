@@ -1,6 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.media
 
 import ru.glassnekeep.anilist.api.enums.MediaRelation
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.character.Character
 
 data class MediaEdge(
@@ -9,4 +10,4 @@ data class MediaEdge(
     val relationType: MediaRelation? = null,
     val isMainStudio: Boolean? = null,
     val characters: List<Character>? = null
-)
+): DomainModel

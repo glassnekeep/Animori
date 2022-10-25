@@ -1,6 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.media
 
 import ru.glassnekeep.anilist.api.enums.ExternalLinkType
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 
 data class MediaExternalLink(
     val id: Int? = null,
@@ -13,4 +14,4 @@ data class MediaExternalLink(
     val icon: String? = null,
     val notes: String? = null,
     val isDisabled: Boolean? = null
-)
+): DomainModel

@@ -3,6 +3,7 @@ package ru.glassnekeep.anilist.api.models.domain.user
 import kotlinx.serialization.json.Json
 import ru.glassnekeep.anilist.api.Favourites
 import ru.glassnekeep.anilist.api.enums.ModRole
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.media.MediaListOptions
 
 data class User(
@@ -27,4 +28,4 @@ data class User(
     val createdAt: Int? = null,
     val updatedAt: Int? = null,
     val previousNames: List<UserPreviousName>? = null
-)
+): DomainModel

@@ -1,5 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.staff
 
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
+
 data class StaffName(
     val first: String? = null,
     val middle: String ? = null,
@@ -8,4 +10,4 @@ data class StaffName(
     val native: String ? = null,
     val alternative: List<String>? = null,
     val userPreferred: String? = null
-)
+): DomainModel

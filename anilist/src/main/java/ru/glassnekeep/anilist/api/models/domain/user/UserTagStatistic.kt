@@ -1,5 +1,6 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.media.MediaTag
 
 data class UserTagStatistic(
@@ -9,4 +10,4 @@ data class UserTagStatistic(
     val chaptersRead: Int? = null,
     val mediaIds: List<Int>? = null,
     val tag: MediaTag? = null
-)
+): DomainModel

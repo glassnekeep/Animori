@@ -1,5 +1,6 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.staff.Staff
 
 data class UserStaffStatistic(
@@ -9,4 +10,4 @@ data class UserStaffStatistic(
     val chaptersRead: Int? = null,
     val mediaIds: List<Int>? = null,
     val staff: Staff? = null
-)
+): DomainModel

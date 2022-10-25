@@ -1,5 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.media
 
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
+
 data class MediaTrend(
     val mediaId: Int? = null,
     val date: Int? = null,
@@ -10,4 +12,4 @@ data class MediaTrend(
     val releasing: Boolean? = null,
     val episode: Int? = null,
     val media: Media? = null
-)
+): DomainModel

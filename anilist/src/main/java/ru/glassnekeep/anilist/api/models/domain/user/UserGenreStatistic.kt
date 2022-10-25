@@ -1,5 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
+
 data class UserGenreStatistic(
     val count: Int? = null,
     val meanScore: Float? = null,
@@ -7,4 +9,4 @@ data class UserGenreStatistic(
     val chaptersRead: Int? = null,
     val mediaIds: List<Int>? = null,
     val genre: String? = null
-)
+): DomainModel

@@ -2,6 +2,7 @@ package ru.glassnekeep.anilist.api.models.domain.media
 
 import ru.glassnekeep.anilist.api.*
 import ru.glassnekeep.anilist.api.enums.*
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.character.CharacterConnection
 import ru.glassnekeep.anilist.api.models.domain.recommendation.RecommendationConnection
 import ru.glassnekeep.anilist.api.models.domain.review.ReviewConnection
@@ -66,4 +67,4 @@ data class Media(
     val isRecommendationBlocked: Boolean? = null,
     val isReviewBlocked: Boolean? = null,
     val modNotes: String? = null
-)
+): DomainModel

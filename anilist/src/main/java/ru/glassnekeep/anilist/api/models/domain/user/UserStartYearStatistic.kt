@@ -1,5 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
+
 data class UserStartYearStatistic(
     val count: Int? = null,
     val meanScore: Float? = null,
@@ -7,4 +9,4 @@ data class UserStartYearStatistic(
     val chaptersRead: Int? = null,
     val mediaIds: List<Int>? = null,
     val startYear: Int? = null
-)
+): DomainModel

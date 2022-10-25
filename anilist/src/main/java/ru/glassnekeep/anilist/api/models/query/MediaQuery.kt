@@ -1,6 +1,5 @@
 package ru.glassnekeep.anilist.api.models.query
 
-import ru.glassnekeep.anilist.QueryParameter
 import ru.glassnekeep.anilist.api.enums.*
 
 data class MediaQuery(

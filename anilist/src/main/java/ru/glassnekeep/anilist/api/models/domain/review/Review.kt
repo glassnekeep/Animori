@@ -2,6 +2,7 @@ package ru.glassnekeep.anilist.api.models.domain.review
 
 import ru.glassnekeep.anilist.api.enums.MediaType
 import ru.glassnekeep.anilist.api.enums.ReviewRating
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.media.Media
 import ru.glassnekeep.anilist.api.models.domain.user.User
 
@@ -22,4 +23,4 @@ data class Review(
     val updatedAt: Int? = null,
     val user: User? = null,
     val media: Media? = null
-)
+): DomainModel

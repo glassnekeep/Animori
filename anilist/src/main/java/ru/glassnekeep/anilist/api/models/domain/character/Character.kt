@@ -1,6 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.character
 
 import ru.glassnekeep.anilist.api.FuzzyDate
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.media.MediaConnection
 
 data class Character(
@@ -18,4 +19,4 @@ data class Character(
     val media: MediaConnection? = null,
     val favourites: Int? = null,
     val modNotes: String? = null
-)
+): DomainModel

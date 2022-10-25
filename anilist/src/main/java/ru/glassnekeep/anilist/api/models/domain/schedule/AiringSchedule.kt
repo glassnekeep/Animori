@@ -1,5 +1,6 @@
 package ru.glassnekeep.anilist.api.models.domain.schedule
 
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.media.Media
 
 data class AiringSchedule(
@@ -9,4 +10,4 @@ data class AiringSchedule(
     val episode: Int? = null,
     val mediaId: Int? = null,
     val media: Media? = null
-)
+): DomainModel

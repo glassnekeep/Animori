@@ -4,6 +4,7 @@ import kotlinx.serialization.json.Json
 import ru.glassnekeep.anilist.api.FuzzyDate
 import ru.glassnekeep.anilist.api.models.domain.user.User
 import ru.glassnekeep.anilist.api.enums.MediaListStatus
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 
 data class MediaList(
     val id: Int? = null,
@@ -26,4 +27,4 @@ data class MediaList(
     val createdAt: Int? = null,
     val media: Media? = null,
     val user: User? = null
-)
+): DomainModel

@@ -1,5 +1,6 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.staff.Staff
 
 data class UserVoiceActorStatistic(
@@ -10,4 +11,4 @@ data class UserVoiceActorStatistic(
     val mediaIds: List<Int>? = null,
     val voiceActor: Staff? = null,
     val characterIds: List<Int>? = null
-)
+): DomainModel

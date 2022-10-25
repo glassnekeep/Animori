@@ -4,6 +4,7 @@ import ru.glassnekeep.anilist.api.ListActivityOption
 import ru.glassnekeep.anilist.api.NotificationOption
 import ru.glassnekeep.anilist.api.enums.UserStaffNameLanguage
 import ru.glassnekeep.anilist.api.enums.UserTitleLanguage
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 
 data class UserOptions(
     val titleLanguage: UserTitleLanguage? = null,
@@ -16,4 +17,4 @@ data class UserOptions(
     val staffNameLanguage: UserStaffNameLanguage? = null,
     val restrictMessagesToFollowing: Boolean? = null,
     val disabledListActivity: List<ListActivityOption>? = null
-)
+): DomainModel

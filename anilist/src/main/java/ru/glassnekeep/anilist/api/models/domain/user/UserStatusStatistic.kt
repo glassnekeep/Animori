@@ -1,6 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
 import ru.glassnekeep.anilist.api.enums.MediaListStatus
+import ru.glassnekeep.anilist.api.models.domain.DomainModel
 
 data class UserStatusStatistic(
     val count: Int? = null,
@@ -9,4 +10,4 @@ data class UserStatusStatistic(
     val chaptersRead: Int? = null,
     val mediaIds: List<Int>? = null,
     val status: MediaListStatus? = null
-)
+): DomainModel
