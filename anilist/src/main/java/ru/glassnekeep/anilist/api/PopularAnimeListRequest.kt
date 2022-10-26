@@ -20,9 +20,11 @@ fun makeRequestString(query: QueryParameter, response: DomainModel, variables: L
     val responseString = response.toString()
         .replace(Regex("[a-zA-Z]+=null,? ?"), "")
         .replace(", )", ")")
-        .replace(Regex("=[0-9a-zA-Z]+,?"), "\n")
-        .replace("(", " {\n ")
+        .replace(Regex("=[0-9a-zA-Z]+,? ?"), "\n\t\t")
+        .replace("(", " {\n\t\t")
+        .replace(")", "}")
         .replace(Regex("[a-zA-Z]+ \\{"), "{")
+        .replace("\t}", "}")
     val variableString = buildString {
         for (variable in variables) {
             append("\$$variable, ")
@@ -39,12 +41,14 @@ fun makeRequestString(query: QueryParameter, response: DomainModel, variables: L
         }
     }
     val parameterString = query.toString()
-        .replace(Regex("[a-zA-Z]+=null,? ?"), "")
+        .replace(Regex("[a-zA-Z_]+=null,? ?"), "")
         .replace(Regex("[a-zA-Z]+\\("), "${response.toString().substringBefore("(")} (")
         .replace("(", " (")
         .replace("=", ": $")
+        .replace(", )", ") ")
+        //.replace(Regex("[a-zA-Z]+: \\\$null, "), "")
     val requestString = buildString {
-        append(queryString, "{\n", parameterString, responseString, "\n}")
+        append(queryString, " {\n\t", parameterString, responseString, "\n}")
     }
     return requestString
 }

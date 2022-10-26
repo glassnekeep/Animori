@@ -2,6 +2,7 @@ package ru.glassnekeep.animori
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import androidx.activity.ComponentActivity
@@ -46,7 +47,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val mediaQuery = MediaQuery(12125, type = MediaType.ANIME)
         val response = Media(id = 0, title = MediaTitle.english)
-        println(makeRequestString(
+        Log.d("Test", makeRequestString(
             query = mediaQuery,
             response = response,
             variables = emptyList()
