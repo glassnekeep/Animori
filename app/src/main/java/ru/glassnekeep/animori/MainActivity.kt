@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val mediaQuery = MediaQuery(12125, type = MediaType.ANIME)
+        val mediaQuery = MediaQuery(15125, type = MediaType.ANIME)
         val response = Media(id = 0, title = MediaTitle.english)
         Log.d("Test", makeRequestString(
             query = mediaQuery,

@@ -2,6 +2,7 @@ package ru.glassnekeep.anilist.api
 
 import ru.glassnekeep.anilist.api.enums.MediaType
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
+import ru.glassnekeep.anilist.api.models.domain.media.Media
 import ru.glassnekeep.anilist.api.models.query.MediaQuery
 import ru.glassnekeep.anilist.api.models.query.QueryParameter
 
@@ -17,7 +18,7 @@ val mediaQuery = MediaQuery(
 
 fun makeRequestString(query: QueryParameter, response: DomainModel, variables: List<String>): String {
     //var string = mediaQuery.toString().replace(Regex("List<a-zA-Z>+=null,? ?"), "")
-    val responseString = response.toString()
+    var responseString = response.toString()
         .replace(Regex("[a-zA-Z]+=null,? ?"), "")
         .replace(", )", ")")
         .replace(Regex("=[0-9a-zA-Z]+,? ?"), "\n\t\t")
@@ -25,6 +26,11 @@ fun makeRequestString(query: QueryParameter, response: DomainModel, variables: L
         .replace(")", "}")
         .replace(Regex("[a-zA-Z]+ \\{"), "{")
         .replace("\t}", "}")
+    if (response is Media) {
+        if (response.title != null) {
+            responseString = responseString.replace("title", "title {\n\t\t\tenglish\n\t\t}")
+        }
+    }
     val variableString = buildString {
         for (variable in variables) {
             append("\$$variable, ")
@@ -44,7 +50,7 @@ fun makeRequestString(query: QueryParameter, response: DomainModel, variables: L
         .replace(Regex("[a-zA-Z_]+=null,? ?"), "")
         .replace(Regex("[a-zA-Z]+\\("), "${response.toString().substringBefore("(")} (")
         .replace("(", " (")
-        .replace("=", ": $")
+        .replace("=", ": ")
         .replace(", )", ") ")
         //.replace(Regex("[a-zA-Z]+: \\\$null, "), "")
     val requestString = buildString {
