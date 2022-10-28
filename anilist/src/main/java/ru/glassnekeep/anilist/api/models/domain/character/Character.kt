@@ -1,6 +1,6 @@
 package ru.glassnekeep.anilist.api.models.domain.character
 
-import ru.glassnekeep.anilist.api.FuzzyDate
+import ru.glassnekeep.anilist.api.models.domain.FuzzyDate
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.media.MediaConnection
 

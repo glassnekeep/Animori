@@ -1,7 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
-import ru.glassnekeep.anilist.api.ListActivityOption
-import ru.glassnekeep.anilist.api.NotificationOption
+import ru.glassnekeep.anilist.api.models.domain.ListActivityOption
+import ru.glassnekeep.anilist.api.models.domain.NotificationOption
 import ru.glassnekeep.anilist.api.enums.UserStaffNameLanguage
 import ru.glassnekeep.anilist.api.enums.UserTitleLanguage
 import ru.glassnekeep.anilist.api.models.domain.DomainModel

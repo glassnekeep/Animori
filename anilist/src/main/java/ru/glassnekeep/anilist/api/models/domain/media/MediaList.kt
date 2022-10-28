@@ -1,7 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.media
 
 import kotlinx.serialization.json.Json
-import ru.glassnekeep.anilist.api.FuzzyDate
+import ru.glassnekeep.anilist.api.models.domain.FuzzyDate
 import ru.glassnekeep.anilist.api.models.domain.user.User
 import ru.glassnekeep.anilist.api.enums.MediaListStatus
 import ru.glassnekeep.anilist.api.models.domain.DomainModel

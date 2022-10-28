@@ -1,4 +1,4 @@
-package ru.glassnekeep.anilist.api
+package ru.glassnekeep.anilist.api.models.domain
 
 import ru.glassnekeep.anilist.api.enums.MediaListStatus
 

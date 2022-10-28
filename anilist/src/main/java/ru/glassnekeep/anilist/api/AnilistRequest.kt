@@ -6,7 +6,7 @@ import ru.glassnekeep.anilist.api.models.domain.media.Media
 import ru.glassnekeep.anilist.api.models.query.MediaQuery
 import ru.glassnekeep.anilist.api.models.query.QueryParameter
 
-data class PopularAnimeListRequest(
+data class AnilistRequest(
     val query: String,
     val variables: String
 )
@@ -53,12 +53,14 @@ fun makeRequestString(query: QueryParameter, response: DomainModel, variables: L
         .replace("=", ": ")
         .replace(", )", ") ")
         //.replace(Regex("[a-zA-Z]+: \\\$null, "), "")
+    val array = Array<Array<Int>>(50) { Array(50, { 0 }) }
+    array.forEachIndexed { index, ints ->
+        ints.forEachIndexed { index1, i ->
+            index + index1 + i
+        }
+    }
     val requestString = buildString {
         append(queryString, " {\n\t", parameterString, responseString, "\n}")
     }
     return requestString
-}
-
-fun basicMediaRequest(mediaQuery: MediaQuery) {
-    var string = mediaQuery.toString()
 }

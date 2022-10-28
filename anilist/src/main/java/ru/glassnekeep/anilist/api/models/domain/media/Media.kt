@@ -1,8 +1,8 @@
 package ru.glassnekeep.anilist.api.models.domain.media
 
-import ru.glassnekeep.anilist.api.*
 import ru.glassnekeep.anilist.api.enums.*
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
+import ru.glassnekeep.anilist.api.models.domain.FuzzyDate
 import ru.glassnekeep.anilist.api.models.domain.character.CharacterConnection
 import ru.glassnekeep.anilist.api.models.domain.recommendation.RecommendationConnection
 import ru.glassnekeep.anilist.api.models.domain.review.ReviewConnection

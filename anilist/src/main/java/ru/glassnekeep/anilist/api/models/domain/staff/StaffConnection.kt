@@ -1,6 +1,6 @@
 package ru.glassnekeep.anilist.api.models.domain.staff
 
-import ru.glassnekeep.anilist.api.PageInfo
+import ru.glassnekeep.anilist.api.models.domain.PageInfo
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 
 data class StaffConnection(

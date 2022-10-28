@@ -11,11 +11,13 @@ import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
+import ru.glassnekeep.anilist.api.AnilistClient
 import ru.glassnekeep.core.di.AppScope
 
 @Module
 object AniListModule {
     @AppScope
+    @AnilistClient
     @Provides
     fun provideAniListApiClient(): HttpClient {
         return HttpClient(Android) {

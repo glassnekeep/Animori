@@ -1,7 +1,7 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
 import kotlinx.serialization.json.Json
-import ru.glassnekeep.anilist.api.Favourites
+import ru.glassnekeep.anilist.api.models.domain.Favourites
 import ru.glassnekeep.anilist.api.enums.ModRole
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.media.MediaListOptions
