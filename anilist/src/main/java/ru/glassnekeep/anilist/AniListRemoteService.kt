@@ -59,7 +59,7 @@ class MediaRemoteService @Inject constructor(
         )
         val query = formGetMediaRequest(mediaQuery)
         val media = withContext(dispatchers.io) {
-            client.get {
+            client.post {
                 contentType(ContentType.Application.Json)
                 setBody(query)
             }.body<Media>()

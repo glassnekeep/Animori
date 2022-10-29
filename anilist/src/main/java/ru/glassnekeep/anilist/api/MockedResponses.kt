@@ -6,13 +6,14 @@ import ru.glassnekeep.anilist.api.models.domain.character.CharacterConnection
 import ru.glassnekeep.anilist.api.models.domain.media.Media
 import ru.glassnekeep.anilist.api.models.domain.media.MediaConnection
 import ru.glassnekeep.anilist.api.models.domain.media.MediaCoverImage
+import ru.glassnekeep.anilist.api.models.domain.media.MediaTitle
 import ru.glassnekeep.anilist.api.models.domain.recommendation.RecommendationConnection
 import ru.glassnekeep.anilist.api.models.domain.studio.StudioConnection
 
 object MockedResponses {
     val mediaResponse = Media(
         id = 0,
-        title = MediaTitle.english,
+        title = MediaTitle(english = " "),
         idMal = 0,
         type = MediaType.ANIME,
         format = MediaFormat.MANGA,

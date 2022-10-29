@@ -17,20 +17,15 @@ val mediaQuery = MediaQuery(
 )
 
 fun makeRequestString(query: QueryParameter, response: DomainModel, variables: List<String>): String {
-    //var string = mediaQuery.toString().replace(Regex("List<a-zA-Z>+=null,? ?"), "")
     var responseString = response.toString()
+        .replaceFirst(Regex("[a-zA-Z]+\\("), "{")
         .replace(Regex("[a-zA-Z]+=null,? ?"), "")
         .replace(", )", ")")
-        .replace(Regex("=[0-9a-zA-Z]+,? ?"), "\n\t\t")
-        .replace("(", " {\n\t\t")
-        .replace(")", "}")
+        .replace(Regex("=[0-9a-zA-Z ]+,? ?"), " ")
         .replace(Regex("[a-zA-Z]+ \\{"), "{")
-        .replace("\t}", "}")
-    if (response is Media) {
-        if (response.title != null) {
-            responseString = responseString.replace("title", "title {\n\t\t\tenglish\n\t\t}")
-        }
-    }
+        .replace("(", " {")
+        .replace(")", "}")
+        .replace("}", "}")
     val variableString = buildString {
         for (variable in variables) {
             append("\$$variable, ")
@@ -52,7 +47,6 @@ fun makeRequestString(query: QueryParameter, response: DomainModel, variables: L
         .replace("(", " (")
         .replace("=", ": ")
         .replace(", )", ") ")
-        //.replace(Regex("[a-zA-Z]+: \\\$null, "), "")
     val array = Array<Array<Int>>(50) { Array(50, { 0 }) }
     array.forEachIndexed { index, ints ->
         ints.forEachIndexed { index1, i ->
@@ -60,7 +54,7 @@ fun makeRequestString(query: QueryParameter, response: DomainModel, variables: L
         }
     }
     val requestString = buildString {
-        append(queryString, " {\n\t", parameterString, responseString, "\n}")
+        append(queryString, " {", parameterString, responseString, "}")
     }
     return requestString
 }

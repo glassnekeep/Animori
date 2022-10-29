@@ -8,12 +8,8 @@ import android.view.Window
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.*
-import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
-import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.toArgb
@@ -25,7 +21,7 @@ import androidx.window.layout.WindowInfoTracker
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import ru.glassnekeep.anilist.api.enums.MediaTitle
+import ru.glassnekeep.anilist.api.models.domain.media.MediaTitle
 import ru.glassnekeep.anilist.api.enums.MediaType
 import ru.glassnekeep.anilist.api.makeRequestString
 import ru.glassnekeep.anilist.api.models.domain.media.Media
@@ -46,7 +42,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val mediaQuery = MediaQuery(15125, type = MediaType.ANIME)
-        val response = Media(id = 0, title = MediaTitle.english)
+        val response = Media(id = 0, title = MediaTitle(english = " "))
         Log.d("Test", makeRequestString(
             query = mediaQuery,
             response = response,
