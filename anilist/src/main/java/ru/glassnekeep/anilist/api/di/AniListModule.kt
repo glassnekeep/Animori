@@ -59,8 +59,8 @@ object AniListModule {
         }
     }
 
-    @Provides
     @AppScope
+    @Provides
     fun providePageSizes() = PageSizes
 
 }

@@ -4,11 +4,11 @@ import dagger.Component
 import ru.glassnekeep.core.di.AppScope
 import ru.glassnekeep.core.di.CoreModule
 
-@Component(modules = [
-    AniListModule::class,
-    CoreModule::class
-])
 @AppScope
+@Component(modules = [
+    CoreModule::class,
+    AniListModule::class
+])
 interface AnilistComponent {
     @Component.Factory
     interface Factory {
