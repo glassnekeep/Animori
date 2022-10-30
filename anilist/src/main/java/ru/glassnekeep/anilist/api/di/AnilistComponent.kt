@@ -1,4 +1,4 @@
-package ru.glassnekeep.anilist
+package ru.glassnekeep.anilist.api.di
 
 import dagger.Component
 import ru.glassnekeep.core.di.AppScope

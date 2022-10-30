@@ -71,5 +71,5 @@ data class MediaQuery(
     val popularity_greater: Int? = null,
     val popularity_lesser: Int? = null,
     val source_in: List<MediaSource>? = null,
-    val sort: List<MediaSource>? = null
+    val sort: List<MediaSort>? = null
 ) : QueryParameter

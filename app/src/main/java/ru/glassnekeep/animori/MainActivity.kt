@@ -24,8 +24,10 @@ import kotlinx.coroutines.flow.stateIn
 import ru.glassnekeep.anilist.api.models.domain.media.MediaTitle
 import ru.glassnekeep.anilist.api.enums.MediaType
 import ru.glassnekeep.anilist.api.makeRequestString
+import ru.glassnekeep.anilist.api.models.domain.PageInfo
 import ru.glassnekeep.anilist.api.models.domain.media.Media
 import ru.glassnekeep.anilist.api.models.query.MediaQuery
+import ru.glassnekeep.anilist.api.models.query.PageQuery
 import ru.glassnekeep.animori.di.LocalAppProvider
 import ru.glassnekeep.animori.ui.theme.AnimoriTheme
 import ru.glassnekeep.animori.ui.theme.md_theme_light_inversePrimary
@@ -46,7 +48,8 @@ class MainActivity : ComponentActivity() {
         Log.d("Test", makeRequestString(
             query = mediaQuery,
             response = response,
-            variables = emptyList()
+            variables = emptyList(),
+            page = PageQuery(page = 1, perPage = 20)
         ))
         val devicePictureFlow = WindowInfoTracker.getOrCreate(this).windowLayoutInfo(this)
             .flowWithLifecycle(this.lifecycle)
