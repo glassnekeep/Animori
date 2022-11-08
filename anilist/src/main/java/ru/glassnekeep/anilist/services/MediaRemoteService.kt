@@ -1,4 +1,4 @@
-package ru.glassnekeep.anilist
+package ru.glassnekeep.anilist.services
 
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -24,21 +24,23 @@ class MediaRemoteService @Inject constructor(
     @AnilistClient
     private val client: HttpClient,
     private val dispatchers: AppDispatchers,
-    private val pageSize: PageSizes
+    private val pageSize: PageSizes,
+    private val contentType: ContentType
 ) {
-    private val contentType = ContentType.Application.Json
-    private fun formGetMediaRequest(mediaQuery: MediaQuery, pageQuery: PageQuery? = null): AnilistRequest {
+    private fun formGetMediaRequest(
+        mediaQuery: MediaQuery,
+        pageQuery: PageQuery? = null
+    ): AnilistRequest {
         val requestString = makeRequestString(
             query = mediaQuery,
             response = MockedResponses.mediaResponse,
             variables = emptyList(),
             page = pageQuery
         )
-        val query = AnilistRequest (
+        return AnilistRequest(
             query = requestString,
             variables = ""
         )
-        return query
     }
 
     suspend fun getMedia(mediaQuery: MediaQuery): Media {

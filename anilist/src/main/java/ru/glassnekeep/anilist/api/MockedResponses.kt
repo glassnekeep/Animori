@@ -9,6 +9,9 @@ import ru.glassnekeep.anilist.api.models.domain.media.MediaCoverImage
 import ru.glassnekeep.anilist.api.models.domain.media.MediaTitle
 import ru.glassnekeep.anilist.api.models.domain.recommendation.RecommendationConnection
 import ru.glassnekeep.anilist.api.models.domain.studio.StudioConnection
+import ru.glassnekeep.anilist.api.models.domain.character.Character
+import ru.glassnekeep.anilist.api.models.domain.character.CharacterImage
+import ru.glassnekeep.anilist.api.models.domain.character.CharacterName
 
 object MockedResponses {
     val mediaResponse = Media(
@@ -42,5 +45,14 @@ object MockedResponses {
         studios = StudioConnection(),
         isAdult = false,
         recommendations = RecommendationConnection()
+    )
+    val characterResponse = Character(
+        id = 0,
+        name = CharacterName(),
+        image = CharacterImage(),
+        description = "",
+        gender = "male",
+        age = " ",
+        media = MediaConnection()
     )
 }

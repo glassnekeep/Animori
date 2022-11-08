@@ -63,4 +63,7 @@ object AniListModule {
     @Provides
     fun providePageSizes() = PageSizes
 
+    @AppScope
+    @Provides
+    fun provideContentType() = ContentType.Application.Json
 }
