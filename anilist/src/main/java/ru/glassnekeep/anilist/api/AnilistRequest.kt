@@ -2,8 +2,8 @@ package ru.glassnekeep.anilist.api
 
 import ru.glassnekeep.anilist.api.enums.MediaType
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
-import ru.glassnekeep.anilist.api.models.domain.media.Media
 import ru.glassnekeep.anilist.api.models.query.MediaQuery
+import ru.glassnekeep.anilist.api.models.query.PageQuery
 import ru.glassnekeep.anilist.api.models.query.QueryParameter
 
 data class AnilistRequest(
@@ -16,21 +16,20 @@ val mediaQuery = MediaQuery(
     type = MediaType.ANIME
 )
 
-fun makeRequestString(query: QueryParameter, response: DomainModel, variables: List<String>): String {
-    //var string = mediaQuery.toString().replace(Regex("List<a-zA-Z>+=null,? ?"), "")
-    var responseString = response.toString()
-        .replace(Regex("[a-zA-Z]+=null,? ?"), "")
-        .replace(", )", ")")
-        .replace(Regex("=[0-9a-zA-Z]+,? ?"), "\n\t\t")
-        .replace("(", " {\n\t\t")
-        .replace(")", "}")
-        .replace(Regex("[a-zA-Z]+ \\{"), "{")
-        .replace("\t}", "}")
-    if (response is Media) {
-        if (response.title != null) {
-            responseString = responseString.replace("title", "title {\n\t\t\tenglish\n\t\t}")
-        }
-    }
+fun makeRequestString(
+    query: QueryParameter,
+    response: DomainModel,
+    variables: List<String>,
+    page: PageQuery? = null
+): String {
+    val queryString = formQueryString(variables)
+    val pageString = formPageString(page)
+    val parametersString = formParametersString(query, page, response)
+    val responseString = formResponseString(response)
+    return formRequestString(queryString, pageString, parametersString, responseString, page)
+}
+
+fun formQueryString(variables: List<String>): String {
     val variableString = buildString {
         for (variable in variables) {
             append("\$$variable, ")
@@ -46,21 +45,65 @@ fun makeRequestString(query: QueryParameter, response: DomainModel, variables: L
             append("query")
         }
     }
-    val parameterString = query.toString()
+    return queryString
+}
+
+fun formPageString(page: PageQuery? = null): String {
+    return if (page != null) {
+        buildString {
+            append(
+                page.toString()
+                    .replace(Regex("[a-zA-Z_]+=null,? ?"), "")
+                    .replace(Regex("[a-zA-Z]+\\("), "Page (")
+                    .replace("(", " (")
+                    .replace("=", ": ")
+                    .replace(", )", ") ")
+            )
+            append(" {")
+        }
+    } else {
+        ""
+    }
+}
+
+fun formParametersString(
+    query: QueryParameter,
+    page: PageQuery? = null,
+    response: DomainModel
+): String {
+    var parameterString = query.toString()
         .replace(Regex("[a-zA-Z_]+=null,? ?"), "")
         .replace(Regex("[a-zA-Z]+\\("), "${response.toString().substringBefore("(")} (")
         .replace("(", " (")
         .replace("=", ": ")
         .replace(", )", ") ")
-        //.replace(Regex("[a-zA-Z]+: \\\$null, "), "")
-    val array = Array<Array<Int>>(50) { Array(50, { 0 }) }
-    array.forEachIndexed { index, ints ->
-        ints.forEachIndexed { index1, i ->
-            index + index1 + i
-        }
+    if (page != null) {
+        parameterString = parameterString.replaceFirstChar { it.lowercaseChar() }
     }
-    val requestString = buildString {
-        append(queryString, " {\n\t", parameterString, responseString, "\n}")
+    return parameterString
+}
+
+fun formResponseString(response: DomainModel): String {
+    return response.toString()
+        .replaceFirst(Regex("[a-zA-Z]+\\("), "{")
+        .replace(Regex("[a-zA-Z]+=null,? ?"), "")
+        .replace(", )", ")")
+        .replace(Regex("=[0-9a-zA-Z ]+,? ?"), " ")
+        .replace(Regex("[a-zA-Z]+ \\{"), "{")
+        .replace("(", " {")
+        .replace(")", "}")
+        .replace("}", "}")
+}
+
+fun formRequestString(
+    queryString: String,
+    pageString: String,
+    parametersString: String,
+    responseString: String,
+    page: PageQuery? = null
+): String {
+    return buildString {
+        append(queryString, " {", pageString, parametersString, responseString, "}")
+        if (page != null) append("}")
     }
-    return requestString
 }

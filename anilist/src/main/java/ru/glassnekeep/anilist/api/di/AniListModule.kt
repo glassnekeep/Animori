@@ -1,4 +1,4 @@
-package ru.glassnekeep.anilist
+package ru.glassnekeep.anilist.api.di
 
 import android.accounts.NetworkErrorException
 import dagger.Module
@@ -11,7 +11,8 @@ import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
-import ru.glassnekeep.anilist.api.AnilistClient
+import ru.glassnekeep.anilist.api.PageSizes
+import ru.glassnekeep.anilist.api.di.AnilistClient
 import ru.glassnekeep.core.di.AppScope
 
 @Module
@@ -58,4 +59,11 @@ object AniListModule {
         }
     }
 
+    @AppScope
+    @Provides
+    fun providePageSizes() = PageSizes
+
+    @AppScope
+    @Provides
+    fun provideContentType() = ContentType.Application.Json
 }

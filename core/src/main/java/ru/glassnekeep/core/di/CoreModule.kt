@@ -5,6 +5,7 @@ import dagger.Provides
 
 @Module
 object CoreModule {
+    @AppScope
     @Provides
     fun provideCoroutineDispatchers() = AppDispatchers
 }
