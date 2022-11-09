@@ -13,6 +13,7 @@ import ru.glassnekeep.anilist.api.models.domain.character.Character
 import ru.glassnekeep.anilist.api.models.domain.character.CharacterImage
 import ru.glassnekeep.anilist.api.models.domain.character.CharacterName
 import ru.glassnekeep.anilist.api.models.domain.schedule.AiringSchedule
+import ru.glassnekeep.anilist.api.models.domain.studio.Studio
 
 object MockedResponses {
     val mediaResponse = Media(
@@ -63,5 +64,11 @@ object MockedResponses {
         episode = 0,
         mediaId = 0,
         media = Media()
+    )
+    val studioResponse = Studio(
+        id = 0,
+        name = "",
+        isAnimationStudio = true,
+        media = MediaConnection()
     )
 }
