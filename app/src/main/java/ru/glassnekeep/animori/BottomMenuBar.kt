@@ -84,7 +84,7 @@ fun BottomMenuBar(
             ) {
                 val route = destinations
                     .find<ProfileEntry>()
-                    .myProfileDestination()
+                    .profileDestination()
                 navController.navigate(route) {
                     launchSingleTop = true
                 }

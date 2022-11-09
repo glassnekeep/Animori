@@ -13,7 +13,7 @@ class HomeEntryImpl @Inject constructor(): HomeEntry() {
         navController: NavHostController,
         destinations: Destinations
     ) {
-        navigation(startDestination = myProfileDestination(), route = "@home") {
+        navigation(startDestination = homeDestination(), route = "@home") {
             composable(route = featureRoute, arguments) {
                 val userId = it.arguments
             }
