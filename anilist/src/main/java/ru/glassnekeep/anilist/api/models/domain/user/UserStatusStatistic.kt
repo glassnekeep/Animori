@@ -1,8 +1,10 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
+import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.enums.MediaListStatus
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 
+@Serializable
 data class UserStatusStatistic(
     val count: Int? = null,
     val meanScore: Float? = null,

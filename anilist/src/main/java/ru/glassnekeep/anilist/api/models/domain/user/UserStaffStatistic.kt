@@ -1,8 +1,10 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
+import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.staff.Staff
 
+@Serializable
 data class UserStaffStatistic(
     val count: Int? = null,
     val meanScore: Float? = null,

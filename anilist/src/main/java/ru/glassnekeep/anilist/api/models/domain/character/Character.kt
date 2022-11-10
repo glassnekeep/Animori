@@ -1,9 +1,11 @@
 package ru.glassnekeep.anilist.api.models.domain.character
 
+import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.models.domain.FuzzyDate
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.media.MediaConnection
 
+@Serializable
 data class Character(
     val id: Int? = null,
     val name: CharacterName? = null,

@@ -1,7 +1,9 @@
 package ru.glassnekeep.anilist.api.models.domain.media
 
+import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 
+@Serializable
 data class MediaTrend(
     val mediaId: Int? = null,
     val date: Int? = null,

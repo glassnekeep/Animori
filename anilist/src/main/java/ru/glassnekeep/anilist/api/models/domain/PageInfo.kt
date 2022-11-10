@@ -1,5 +1,8 @@
 package ru.glassnekeep.anilist.api.models.domain
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class PageInfo(
     val total: Int? = null,
     val perPage: Int? = null,

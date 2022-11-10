@@ -1,5 +1,6 @@
 package ru.glassnekeep.anilist.api.models.domain.media
 
+import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.enums.*
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.FuzzyDate
@@ -11,6 +12,7 @@ import ru.glassnekeep.anilist.api.models.domain.schedule.AiringScheduleConnectio
 import ru.glassnekeep.anilist.api.models.domain.staff.StaffConnection
 import ru.glassnekeep.anilist.api.models.domain.studio.StudioConnection
 
+@Serializable
 data class Media(
     val id: Int? = null,
     val idMal: Int? = null,
