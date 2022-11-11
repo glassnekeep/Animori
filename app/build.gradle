@@ -98,6 +98,7 @@ dependencies {
     implementation project(":auth")
     implementation project(":navigation")
     implementation project(":profile-feature-impl")
+    implementation project(":home-feature")
     //TODO Удалить эту имплементацию, она для теста!!!
     implementation project(":anilist")
 }

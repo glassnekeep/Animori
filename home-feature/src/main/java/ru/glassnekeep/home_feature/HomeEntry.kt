@@ -5,7 +5,7 @@ import androidx.navigation.navArgument
 import ru.glassnekeep.core.AggregateFeatureEntry
 import ru.glassnekeep.core.ComposableFeatureEntry
 
-abstract class HomeEntry: AggregateFeatureEntry {
+abstract class HomeEntry: ComposableFeatureEntry {
 
     /**
      * Declares an entry root of the feature
@@ -32,7 +32,7 @@ abstract class HomeEntry: AggregateFeatureEntry {
     /**
      * Builds destination to the profile page of current user.
      */
-    fun homeDestination(): String = "profile"
+    fun homeDestination(): String = "home"
 
 //    protected companion object {
 //        const val ARG_USER_ID = "userId"

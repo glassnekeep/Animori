@@ -63,9 +63,10 @@ dependencies {
     api "androidx.compose.material3:material3:$material_version"
     api "androidx.compose.material3:material3-window-size-class:$material_version"
     api  "androidx.compose.material:material-icons-extended:$compose_version"
+    api "androidx.compose.material:material:1.4.0-alpha02"
 
     //Navigation
-    api "androidx.navigation:navigation-compose:2.6.0-alpha01"
+    api "androidx.navigation:navigation-compose:2.6.0-alpha03"
 
     //Dagger
     api "com.google.dagger:dagger:$dagger_version"
