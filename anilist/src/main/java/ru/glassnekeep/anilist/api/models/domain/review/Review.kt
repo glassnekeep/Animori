@@ -1,11 +1,13 @@
 package ru.glassnekeep.anilist.api.models.domain.review
 
+import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.enums.MediaType
 import ru.glassnekeep.anilist.api.enums.ReviewRating
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.media.Media
 import ru.glassnekeep.anilist.api.models.domain.user.User
 
+@Serializable
 data class Review(
     val id: Int? = null,
     val userId: Int? = null,

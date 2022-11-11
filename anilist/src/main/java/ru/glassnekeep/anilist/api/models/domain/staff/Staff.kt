@@ -1,11 +1,13 @@
 package ru.glassnekeep.anilist.api.models.domain.staff
 
+import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.models.domain.FuzzyDate
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.character.CharacterConnection
 import ru.glassnekeep.anilist.api.models.domain.media.MediaConnection
 import ru.glassnekeep.anilist.api.models.domain.user.User
 
+@Serializable
 data class Staff(
     val id: Int? = null,
     val name: StaffName? = null,

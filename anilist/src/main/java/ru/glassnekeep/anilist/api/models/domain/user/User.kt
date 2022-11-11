@@ -1,11 +1,13 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import ru.glassnekeep.anilist.api.models.domain.Favourites
 import ru.glassnekeep.anilist.api.enums.ModRole
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.media.MediaListOptions
 
+@Serializable
 data class User(
     val id: Int? = null,
     val name: String? = null,
@@ -15,7 +17,8 @@ data class User(
     val isFollowing: Boolean? = null,
     val isFollower: Boolean? = null,
     val isBlocked: Boolean? = null,
-    val bans: Json? = null,
+    //ТУТ по доке должен быть Json
+    val bans: String? = null,
     val options: UserOptions? = null,
     val mediaListOptions: MediaListOptions? = null,
     val favourites: Favourites? = null,
