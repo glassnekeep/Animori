@@ -1,8 +1,10 @@
 package ru.glassnekeep.anilist.api.models.domain.studio
 
+import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.domain.media.MediaConnection
 
+@Serializable
 data class Studio(
     val id: Int? = null,
     val name: String? = null,

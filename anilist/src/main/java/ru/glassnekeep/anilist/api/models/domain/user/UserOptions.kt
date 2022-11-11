@@ -1,11 +1,13 @@
 package ru.glassnekeep.anilist.api.models.domain.user
 
+import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.models.domain.ListActivityOption
 import ru.glassnekeep.anilist.api.models.domain.NotificationOption
 import ru.glassnekeep.anilist.api.enums.UserStaffNameLanguage
 import ru.glassnekeep.anilist.api.enums.UserTitleLanguage
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 
+@Serializable
 data class UserOptions(
     val titleLanguage: UserTitleLanguage? = null,
     val displayAdultContent: Boolean? = null,

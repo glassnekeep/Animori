@@ -1,11 +1,13 @@
 package ru.glassnekeep.anilist.api.models.domain.media
 
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import ru.glassnekeep.anilist.api.models.domain.FuzzyDate
 import ru.glassnekeep.anilist.api.models.domain.user.User
 import ru.glassnekeep.anilist.api.enums.MediaListStatus
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 
+@Serializable
 data class MediaList(
     val id: Int? = null,
     val userId: Int? = null,
@@ -19,8 +21,10 @@ data class MediaList(
     val private: Boolean? = null,
     val notes: String? = null,
     val hiddenFromStatusLists: Boolean? = null,
-    val customLists: Json? = null,
-    val advancedScores: Json? = null,
+    //Json here in case of docs
+    val customLists: String? = null,
+    //Json here in case of docs
+    val advancedScores: String? = null,
     val startedAt: FuzzyDate? = null,
     val completedAt: FuzzyDate? = null,
     val updatedAt: Int? = null,
