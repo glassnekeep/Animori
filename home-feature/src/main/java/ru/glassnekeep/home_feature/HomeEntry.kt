@@ -5,7 +5,7 @@ import androidx.navigation.navArgument
 import ru.glassnekeep.core.AggregateFeatureEntry
 import ru.glassnekeep.core.ComposableFeatureEntry
 
-abstract class HomeEntry: ComposableFeatureEntry {
+abstract class HomeEntry: AggregateFeatureEntry {
 
     /**
      * Declares an entry root of the feature

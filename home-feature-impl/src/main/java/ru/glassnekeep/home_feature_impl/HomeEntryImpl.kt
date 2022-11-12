@@ -12,14 +12,14 @@ import ru.glassnekeep.home_feature.HomeEntry
 import javax.inject.Inject
 
 class HomeEntryImpl @Inject constructor(): HomeEntry() {
-    override fun NavGraphBuilder.Register(
+    override fun NavGraphBuilder.navigation(
         navController: NavHostController,
-        destinations: Destinations,
-        backStackEntry: NavBackStackEntry,
-        modifier: Modifier
+        destinations: Destinations
     ) {
-        val viewModel = injectedViewModel {
-            DaggerHomeComponent.builder()
+        navigation(startDestination = homeDestination(), route = "home") {
+            composable(route = featureRoute, arguments) {
+                val homeDataProvider = LocalHome
+            }
         }
     }
 
