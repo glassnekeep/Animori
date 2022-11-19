@@ -18,7 +18,6 @@ import ru.glassnekeep.animori.di.LocalAppProvider
 import ru.glassnekeep.animori.ui.theme.AnimoriTheme
 import ru.glassnekeep.core.ComposableFeatureEntry
 import ru.glassnekeep.core.find
-import ru.glassnekeep.home_feature.HomeEntry
 import ru.glassnekeep.profile_feature.ProfileEntry
 import ru.glassnekeep.profile_feature_impl.LocalProfileDataProvider
 import ru.glassnekeep.user_data.LocalUserDataProvider

@@ -19,7 +19,6 @@ import javax.inject.Inject
 
 @AppScope
 class AiringScheduleRemoteService @Inject constructor(
-    @AnilistClient
     private val client: HttpClient,
     private val dispatchers: AppDispatchers,
     private val pageSize: PageSizes,

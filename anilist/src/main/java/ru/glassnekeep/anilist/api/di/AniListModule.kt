@@ -12,13 +12,20 @@ import io.ktor.client.plugins.logging.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import ru.glassnekeep.anilist.api.PageSizes
-import ru.glassnekeep.anilist.api.di.AnilistClient
 import ru.glassnekeep.core.di.AppScope
 
 @Module
 object AniListModule {
     @AppScope
-    @AnilistClient
+    @Provides
+    fun providePageSizes(): PageSizes = PageSizes
+
+    @AppScope
+    @Provides
+    fun provideContentType(): ContentType = ContentType.Application.Json
+
+    @AppScope
+    //@AnilistClient
     @Provides
     fun provideAniListApiClient(): HttpClient {
         return HttpClient(Android) {
@@ -58,12 +65,4 @@ object AniListModule {
             //expectSuccess = true
         }
     }
-
-    @AppScope
-    @Provides
-    fun providePageSizes() = PageSizes
-
-    @AppScope
-    @Provides
-    fun provideContentType() = ContentType.Application.Json
 }

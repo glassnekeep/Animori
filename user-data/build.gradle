@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    namespace 'ru.yandex.market.user_data'
-    compileSdk 32
+    namespace 'ru.glassnekeep.user_data'
+    compileSdk 33
 
     defaultConfig {
         minSdk 24
-        targetSdk 32
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"

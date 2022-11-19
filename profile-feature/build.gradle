@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'ru.yandex.market.profile_feature'
+    namespace 'ru.glassnekeep.profile_feature'
     compileSdk 32
 
     defaultConfig {

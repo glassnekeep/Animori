@@ -13,22 +13,14 @@ import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import ru.glassnekeep.animori.di.LocalAppProvider
 import ru.glassnekeep.animori.ui.theme.md_theme_light_onPrimary
-import ru.glassnekeep.core.ComposableFeatureEntry
-import ru.glassnekeep.core.Destinations
 import ru.glassnekeep.core.find
 import ru.glassnekeep.home_feature.HomeEntry
 import ru.glassnekeep.profile_feature.ProfileEntry
@@ -43,7 +35,7 @@ fun Navigation() {
 
     NavHost(navController = navController, startDestination = homeScreen.homeDestination()) {
         with(homeScreen) {
-            RootComposable(navController, destinations, Modifier)
+            navigation(navController, destinations)
         }
         with(profileScreen) {
             navigation(navController, destinations)

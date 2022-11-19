@@ -9,7 +9,7 @@ import ru.glassnekeep.core.di.CoreModule
     CoreModule::class,
     AniListModule::class
 ])
-interface AnilistComponent {
+interface AnilistComponent : AnilistDataProvider {
     @Component.Factory
     interface Factory {
         fun create(): AnilistComponent
