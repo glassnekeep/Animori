@@ -33,7 +33,7 @@ fun Navigation() {
     val profileScreen = destinations.find<ProfileEntry>()
     val homeScreen = destinations.find<HomeEntry>()
 
-    NavHost(navController = navController, startDestination = homeScreen.homeDestination()) {
+    NavHost(navController = navController, startDestination = "@home") {
         with(homeScreen) {
             navigation(navController, destinations)
         }

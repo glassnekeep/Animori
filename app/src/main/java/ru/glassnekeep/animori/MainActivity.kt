@@ -18,6 +18,7 @@ import ru.glassnekeep.animori.di.LocalAppProvider
 import ru.glassnekeep.animori.ui.theme.AnimoriTheme
 import ru.glassnekeep.core.ComposableFeatureEntry
 import ru.glassnekeep.core.find
+import ru.glassnekeep.home_feature_impl.LocalHomeDataProvider
 import ru.glassnekeep.profile_feature.ProfileEntry
 import ru.glassnekeep.profile_feature_impl.LocalProfileDataProvider
 import ru.glassnekeep.user_data.LocalUserDataProvider
@@ -31,7 +32,8 @@ class MainActivity : ComponentActivity() {
                 CompositionLocalProvider(
                     LocalAppProvider provides application.appProvider,
                     LocalProfileDataProvider provides application.appProvider,
-                    LocalUserDataProvider provides application.appProvider
+                    LocalUserDataProvider provides application.appProvider,
+                    LocalHomeDataProvider provides application.appProvider
                 ) {
                     StartScreen()
                 }

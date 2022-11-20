@@ -32,7 +32,7 @@ abstract class HomeEntry: AggregateFeatureEntry {
     /**
      * Builds destination to the profile page of current user.
      */
-    fun homeDestination(): String = "home"
+    fun homeDestination() = featureRoute
 
 //    protected companion object {
 //        const val ARG_USER_ID = "userId"

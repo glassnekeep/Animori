@@ -36,7 +36,7 @@ class ProfileEntryImpl @Inject constructor() : ProfileEntry() {
         navController: NavHostController,
         destinations: Destinations
     ) {
-        navigation(startDestination = profileDestination(), route = "profile") {
+        navigation(startDestination = profileDestination(), route = "@profile") {
             composable(route = featureRoute, arguments) {
                 val userId = it.arguments?.getString(ARG_USER_ID)
                 val userDataProvider = LocalUserDataProvider.current
