@@ -51,7 +51,7 @@ class ProfileEntryImpl @Inject constructor() : ProfileEntry() {
     }
 
     private fun buildRootProfileComponent(userDataProvider: UserDataProvider) =
-        DaggerProfileComponent.builder().userDataProvider(userDataProvider).build()
+        DaggerProfileComponent.factory().create(userDataProvider)
 
 }
 
