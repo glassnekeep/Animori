@@ -5,7 +5,7 @@ import ru.glassnekeep.anilist.api.di.AnilistComponent
 import ru.glassnekeep.anilist.api.di.AnilistDataProvider
 import ru.glassnekeep.home_feature_impl.HomeDataProvider
 
-@HomeScreenScope
+@HomeScope
 @Component(
     dependencies = [AnilistDataProvider::class],
     modules = [HomeModule::class]

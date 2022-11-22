@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import ru.glassnekeep.animori.di.LocalAppProvider
@@ -26,8 +27,7 @@ import ru.glassnekeep.home_feature.HomeEntry
 import ru.glassnekeep.profile_feature.ProfileEntry
 
 @Composable
-fun Navigation() {
-    val navController = rememberNavController()
+fun Navigation(navController: NavHostController) {
     val destinations = LocalAppProvider.current.destinations
 
     val profileScreen = destinations.find<ProfileEntry>()
@@ -72,8 +72,8 @@ fun BottomNav(
 }
 
 sealed class BottomNavItem(val title: String, val image: ImageVector, val route: String = "") {
-    object Home: BottomNavItem("Home", Icons.Filled.Home)
+    object Home: BottomNavItem("Home", Icons.Filled.Home, "@home")
     object Search: BottomNavItem("Search", Icons.Filled.Search)
     object MyList: BottomNavItem("My List", Icons.Filled.List)
-    object Profile: BottomNavItem("Profile", Icons.Filled.Person)
+    object Profile: BottomNavItem("Profile", Icons.Filled.Person, "profile")
 }

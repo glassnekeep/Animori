@@ -9,6 +9,6 @@ import ru.glassnekeep.home_feature_impl.ScheduleRepositoryImpl
 @Module
 interface HomeModule {
     @Binds
-    @HomeScreenScope
+    @HomeScope
     fun provideScheduleRepository(impl: ScheduleRepositoryImpl): ScheduleRepository
 }

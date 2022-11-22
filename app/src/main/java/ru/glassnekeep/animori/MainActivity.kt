@@ -58,7 +58,7 @@ fun StartScreen() {
             BottomNav(navController, bottomNavigationItems)
         }
     ) {
-        Navigation()
+        Navigation(navController)
     }
 }
 
