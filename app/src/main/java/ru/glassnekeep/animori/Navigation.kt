@@ -12,13 +12,14 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import ru.glassnekeep.animori.di.LocalAppProvider
 import ru.glassnekeep.animori.ui.theme.md_theme_light_onPrimary
@@ -55,15 +56,17 @@ fun BottomNav(
     BottomNavigation(
         contentColor = md_theme_light_onPrimary
     ) {
+        var selectedItem by remember { mutableStateOf("@home") }
         items.forEach { item ->
             BottomNavigationItem(
                 icon = { Icon(imageVector = item.image, contentDescription = item.title) },
                 label = { Text(text = item.title) },
-                selectedContentColor = Color.Black,
+                selectedContentColor = Color.White,
                 unselectedContentColor = Color.White.copy(0.4f),
                 alwaysShowLabel = true,
-                selected = false,
+                selected = item.route == selectedItem,
                 onClick = {
+                    selectedItem = item.route
                     navController.navigate(item.route)
                 }
             )

@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
@@ -27,9 +28,8 @@ fun HomeScreen(
         topBar = { HomeTopBar(title = "Test") },
         content = {
             Column(modifier = Modifier.padding(it)) {
-
+                Text(text = "TEST MAIN TEXT", fontFamily = FontFamily.Serif)
             }
-            Text(text = "TEST MAIN TEXT")
         }
     )
 }
