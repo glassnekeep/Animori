@@ -59,7 +59,7 @@ fun BottomNav(
             BottomNavigationItem(
                 icon = { Icon(imageVector = item.image, contentDescription = item.title) },
                 label = { Text(text = item.title) },
-                selectedContentColor = Color.White,
+                selectedContentColor = Color.Black,
                 unselectedContentColor = Color.White.copy(0.4f),
                 alwaysShowLabel = true,
                 selected = false,

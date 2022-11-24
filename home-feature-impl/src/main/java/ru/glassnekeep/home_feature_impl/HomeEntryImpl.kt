@@ -1,5 +1,7 @@
 package ru.glassnekeep.home_feature_impl
 
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -7,7 +9,6 @@ import androidx.navigation.navigation
 import ru.glassnekeep.core.Destinations
 import ru.glassnekeep.core.injectedViewModel
 import ru.glassnekeep.home_feature.HomeEntry
-import ru.glassnekeep.home_feature_impl.di.DaggerHomeComponent
 import ru.glassnekeep.home_feature_impl.di.DaggerHomeScreenComponent
 import javax.inject.Inject
 
@@ -22,9 +23,8 @@ class HomeEntryImpl @Inject constructor(): HomeEntry() {
                 val viewModel = injectedViewModel {
                     DaggerHomeScreenComponent.factory().create(homeDataProvider).viewModel
                 }
+                HomeScreen(navController, viewModel)
             }
         }
     }
-
-
 }

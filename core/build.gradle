@@ -51,7 +51,7 @@ dependencies {
 
     //Compose, these dependencies are transited to other modules
     api "androidx.compose.ui:ui:$compose_version"
-    api "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    api "androidx.compose.ui:ui-tooling-preview:1.4.0-alpha02"
     api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     api 'androidx.activity:activity-compose:1.6.0'
 
