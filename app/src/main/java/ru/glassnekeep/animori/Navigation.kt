@@ -22,7 +22,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import ru.glassnekeep.animori.di.LocalAppProvider
-import ru.glassnekeep.animori.ui.theme.md_theme_light_onPrimary
+import ru.glassnekeep.design_system.theme.md_theme_light_onPrimary
 import ru.glassnekeep.core.find
 import ru.glassnekeep.home_feature.HomeEntry
 import ru.glassnekeep.profile_feature.ProfileEntry
@@ -54,7 +54,7 @@ fun BottomNav(
     items: List<BottomNavItem>
 ) {
     BottomNavigation(
-        contentColor = md_theme_light_onPrimary
+        //contentColor = md_theme_light_onPrimary
     ) {
         var selectedItem by remember { mutableStateOf("@home") }
         items.forEach { item ->

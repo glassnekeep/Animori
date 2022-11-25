@@ -15,7 +15,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import ru.glassnekeep.animori.di.LocalAppProvider
-import ru.glassnekeep.animori.ui.theme.AnimoriTheme
+import ru.glassnekeep.design_system.theme.AnimoriTheme
+import ru.glassnekeep.basic_ui.SmallAnimeCard
 import ru.glassnekeep.core.ComposableFeatureEntry
 import ru.glassnekeep.core.find
 import ru.glassnekeep.home_feature_impl.HomeScreen

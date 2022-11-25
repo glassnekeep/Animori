@@ -1,4 +1,4 @@
-package ru.glassnekeep.animori.ui.theme
+package ru.glassnekeep.design_system.theme
 
 import android.app.Activity
 import android.os.Build

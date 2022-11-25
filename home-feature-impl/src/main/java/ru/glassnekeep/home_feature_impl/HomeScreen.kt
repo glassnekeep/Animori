@@ -4,10 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Person3
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -40,7 +37,7 @@ private fun HomeTopBar(
     title: String,
     modifier: Modifier = Modifier,
 ) {
-    LargeTopAppBar(title = {
+    TopAppBar(title = {
         Text(
             text = title,
             maxLines = 1,
@@ -50,14 +47,14 @@ private fun HomeTopBar(
     navigationIcon = {
         Icon(
             //TODO Тут, наверное, должна быть иконка самого нашего приложения
-            imageVector = Icons.Filled.Person3,
+            imageVector = Icons.Filled.Circle,
             contentDescription = "Application's icon"
         )
     },
     actions = {
         IconButton(onClick = { /*TODO*/ }) {
             Icon(
-                imageVector = Icons.Filled.Search,
+                imageVector = Icons.Filled.Notifications,
                 contentDescription = "Search icon on main screen"
             )
         }

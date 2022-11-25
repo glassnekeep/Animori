@@ -29,7 +29,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import ru.glassnekeep.animori.ui.theme.md_theme_dark_background
+import ru.glassnekeep.design_system.theme.md_theme_dark_background
 import ru.glassnekeep.core.Destinations
 import ru.glassnekeep.core.find
 import ru.glassnekeep.profile_feature.ProfileEntry

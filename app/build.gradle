@@ -101,4 +101,5 @@ dependencies {
     implementation project(":home-feature-impl")
     //TODO Удалить эту имплементацию, она для теста!!!
     implementation project(":anilist")
+    implementation project(":basic-ui")
 }
