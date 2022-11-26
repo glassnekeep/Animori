@@ -57,7 +57,9 @@ fun SmallAnimeCard(
                 modifier = Modifier.padding(2.dp)
             )
             Row(
-                modifier = Modifier.fillMaxWidth().padding(2.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(2.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                 Text(
@@ -66,12 +68,17 @@ fun SmallAnimeCard(
                     style = Typography.bodySmall
                 )
                 //Spacer(modifier = Modifier.weight(1f))
-                Icon(
-                    imageVector = Icons.Filled.MoreVert,
-                    contentDescription = " ",
-                    tint = Color.White,
+                IconButton(
+                    onClick = { /*TODO*/ },
                     modifier = Modifier.size(15.dp)
-                )
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.MoreVert,
+                        contentDescription = " ",
+                        tint = Color.White,
+                        //modifier = Modifier.size(15.dp)
+                    )
+                }
             }
         }
     }

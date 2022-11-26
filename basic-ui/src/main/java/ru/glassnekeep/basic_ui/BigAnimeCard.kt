@@ -69,12 +69,17 @@ fun BigAnimeCard(
                     color = Color.White,
                     maxLines = 3,
                 )
-                Icon(
-                    imageVector = Icons.Filled.PlaylistAdd,
-                    contentDescription = " ",
-                    tint = Color.White,
+                IconButton(
+                    onClick = { /*TODO*/ },
                     modifier = Modifier.size(32.dp)
-                )
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.PlaylistAdd,
+                        contentDescription = " ",
+                        tint = Color.White,
+                        //modifier = Modifier.size(24.dp)
+                    )
+                }
             }
         }
     }
