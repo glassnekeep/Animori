@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -32,7 +33,8 @@ fun SmallAnimeCard(
 ) {
     Card(
         elevation = CardDefaults.cardElevation(),
-        modifier = Modifier.wrapContentSize(),
+        //modifier = Modifier.wrapContentSize(),
+        modifier = Modifier.width(120.dp),
         shape = RoundedCornerShape(5.dp),
         colors = CardDefaults.elevatedCardColors(
             containerColor = Color.DarkGray
@@ -45,15 +47,16 @@ fun SmallAnimeCard(
             Image(
                 painter = painterResource(id = R.drawable.attack_on_titans),
                 contentDescription = "Eighty Six title image",
-                modifier = Modifier.wrapContentSize()
+                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.FillWidth
             )
             Text(
                 text = "Атака титанов",
                 style = Typography.bodySmall,
-                fontSize = 10.sp
+                modifier = Modifier.padding(2.dp)
             )
             Row(
-                modifier = Modifier.sizeIn(minWidth = 0.dp, maxWidth = 80.dp),
+                modifier = Modifier.fillMaxWidth().padding(2.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                 Text(
@@ -61,7 +64,7 @@ fun SmallAnimeCard(
                     color = Color.Cyan,
                     style = Typography.bodySmall
                 )
-                Spacer(modifier = Modifier.weight(1f))
+                //Spacer(modifier = Modifier.weight(1f))
                 Icon(
                     imageVector = Icons.Filled.MoreVert,
                     contentDescription = " ",
