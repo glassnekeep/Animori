@@ -53,6 +53,7 @@ fun SmallAnimeCard(
             Text(
                 text = "Атака титанов",
                 style = Typography.bodySmall,
+                color = Color.White,
                 modifier = Modifier.padding(2.dp)
             )
             Row(
