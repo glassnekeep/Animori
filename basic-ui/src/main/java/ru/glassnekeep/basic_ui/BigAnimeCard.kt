@@ -23,7 +23,9 @@ import ru.glassnekeep.design_system.theme.Typography
 fun BigAnimeCard(
     navController: NavController,
     destination: String,
-    content: @Composable () -> Unit = { }
+    content: @Composable () -> Unit = { },
+    cardOnClick: () -> Unit = { },
+    iconOnCLick: () -> Unit = { }
 ) {
     Card(
         elevation = CardDefaults.cardElevation(),

@@ -23,7 +23,9 @@ import ru.glassnekeep.design_system.theme.Typography
 fun SmallAnimeCard(
     navController: NavController,
     destination: String,
-    content: @Composable () -> Unit = { }
+    content: @Composable () -> Unit = { },
+    cardOnClick: () -> Unit = { },
+    iconOnClick: () -> Unit = { }
 ) {
     Card(
         elevation = CardDefaults.cardElevation(),
@@ -33,9 +35,7 @@ fun SmallAnimeCard(
         colors = CardDefaults.elevatedCardColors(
             containerColor = Color.DarkGray
         ),
-        onClick = {
-
-        }
+        onClick = cardOnClick
     ) {
         Column {
             Image(
@@ -63,7 +63,7 @@ fun SmallAnimeCard(
                 )
                 //Spacer(modifier = Modifier.weight(1f))
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = iconOnClick,
                     modifier = Modifier.size(15.dp)
                 ) {
                     Icon(
