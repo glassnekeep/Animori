@@ -5,7 +5,6 @@ import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.coroutines.withContext
-import ru.glassnekeep.anilist.api.di.AnilistClient
 import ru.glassnekeep.anilist.api.AnilistRequest
 import ru.glassnekeep.anilist.api.MockedResponses
 import ru.glassnekeep.anilist.api.PageSizes
@@ -21,7 +20,6 @@ import javax.inject.Inject
 
 @AppScope
 class MediaRemoteService @Inject constructor(
-    @AnilistClient
     private val client: HttpClient,
     private val dispatchers: AppDispatchers,
     private val pageSize: PageSizes,

@@ -1,6 +1,5 @@
 package ru.glassnekeep.basic_ui
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -10,22 +9,27 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import ru.glassnekeep.design_system.theme.AnimoriTheme
 import ru.glassnekeep.design_system.theme.Typography
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalGlideComposeApi::class)
 @Composable
 fun BigAnimeCard(
     navController: NavController,
     destination: String,
     content: @Composable () -> Unit = { },
     cardOnClick: () -> Unit = { },
-    iconOnCLick: () -> Unit = { }
+    iconOnCLick: () -> Unit = { },
+    imageUrl: String,
+    title: String,
+    description: String
 ) {
     Card(
         elevation = CardDefaults.cardElevation(),
@@ -44,10 +48,11 @@ fun BigAnimeCard(
         Row(
             modifier = Modifier.fillMaxHeight()
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.magic_battle),
-                contentDescription = "Magic battle image",
+            GlideImage(
+                //painter = painterResource(id = R.drawable.magic_battle),
+                contentDescription = "Anime image",
                 modifier = Modifier.fillMaxHeight(),
+                model = imageUrl,
                 contentScale = ContentScale.Crop
             )
             Column(
@@ -58,15 +63,16 @@ fun BigAnimeCard(
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "Магическая битва",
+                    text = title,
                     style = Typography.headlineMedium,
                     color = Color.White,
                 )
                 Text(
-                    text = "Описание данного великолепного тайтла",
+                    text = description,
                     style = Typography.bodyMedium,
                     color = Color.White,
-                    maxLines = 3,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
                 )
                 IconButton(
                     onClick = { /*TODO*/ },
@@ -76,7 +82,6 @@ fun BigAnimeCard(
                         imageVector = Icons.Filled.PlaylistAdd,
                         contentDescription = " ",
                         tint = Color.White,
-                        //modifier = Modifier.size(24.dp)
                     )
                 }
             }
@@ -88,6 +93,12 @@ fun BigAnimeCard(
 @Composable
 fun PreviewBigAnimeCard() {
     AnimoriTheme {
-        BigAnimeCard(navController = rememberNavController(), destination = "")
+        BigAnimeCard(
+            navController = rememberNavController(),
+            destination = "",
+            description = "Мистические загадки с множеством неожиданных сюжетных поворотов, а также заклинания и призывы монстров представлены в аниме \"Jujutsu Kaisen\". Юдзи обязан спасти не только своих друзей от демонов, но и попытаться вновь заточить ужасного Рёмэн. Во всём пареньку будет помогать опытный экзорцист, который жаждет уничтожить всех сущностей из параллельного мира.",
+            imageUrl = "",
+            title = "Магическая битва"
+        )
     }
 }
