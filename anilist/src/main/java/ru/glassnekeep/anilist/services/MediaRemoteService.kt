@@ -18,6 +18,8 @@ import ru.glassnekeep.core.di.AppDispatchers
 import ru.glassnekeep.core.di.AppScope
 import javax.inject.Inject
 
+//TODO Нужно добавить модель для возврата с Page
+
 @AppScope
 class MediaRemoteService @Inject constructor(
     private val client: HttpClient,

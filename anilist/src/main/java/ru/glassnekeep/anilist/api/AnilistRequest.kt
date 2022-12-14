@@ -1,11 +1,13 @@
 package ru.glassnekeep.anilist.api
 
+import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.enums.MediaType
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.query.MediaQuery
 import ru.glassnekeep.anilist.api.models.query.PageQuery
 import ru.glassnekeep.anilist.api.models.query.QueryParameter
 
+@Serializable
 data class AnilistRequest(
     val query: String,
     val variables: String

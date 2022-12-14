@@ -4,25 +4,16 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import ru.glassnekeep.animori.di.LocalAppProvider
 import ru.glassnekeep.design_system.theme.AnimoriTheme
-import ru.glassnekeep.basic_ui.SmallAnimeCard
-import ru.glassnekeep.core.ComposableFeatureEntry
-import ru.glassnekeep.core.find
-import ru.glassnekeep.home_feature_impl.HomeScreen
-import ru.glassnekeep.home_feature_impl.HomeViewModel
 import ru.glassnekeep.home_feature_impl.LocalHomeDataProvider
-import ru.glassnekeep.profile_feature.ProfileEntry
 import ru.glassnekeep.profile_feature_impl.LocalProfileDataProvider
 import ru.glassnekeep.user_data.LocalUserDataProvider
 
@@ -82,6 +73,6 @@ fun DefaultPreview() {
 @Composable
 fun HomeScreenPreview() {
     AnimoriTheme {
-        HomeScreen(navController = rememberNavController(), viewModel = HomeViewModel())
+        //HomeScreen(navController = rememberNavController(), viewModel = HomeViewModel())
     }
 }
