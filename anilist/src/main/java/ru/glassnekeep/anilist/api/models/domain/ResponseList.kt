@@ -1,5 +1,6 @@
 package ru.glassnekeep.anilist.api.models.domain
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -9,5 +10,5 @@ data class ResponseList(
 
 @Serializable
 data class Data(
-    val page: Page,
+    @SerialName("Page") val page: Page,
 )

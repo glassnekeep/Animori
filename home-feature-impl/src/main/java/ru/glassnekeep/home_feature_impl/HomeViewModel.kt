@@ -27,7 +27,6 @@ class HomeViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            println(mediaRemoteService.getMedia(MediaQuery(type = MediaType.ANIME)))
             while(isActive) {
                 val mediaList = mediaRemoteService.getMediaList(MediaQuery(type = MediaType.ANIME))
                 _state.value = HomeState.Data(mediaList)
