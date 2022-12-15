@@ -107,5 +107,5 @@ fun formRequestString(
     return buildString {
         append(queryString, " {", pageString, parametersString, responseString, "}")
         if (page != null) append("}")
-    }
+    }.replace(Regex("=\\[]"), "").replace(Regex(","), "").replace(Regex("\\{\\}"), "")
 }
