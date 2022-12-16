@@ -8,7 +8,6 @@ import kotlinx.coroutines.withContext
 import ru.glassnekeep.anilist.api.AnilistRequest
 import ru.glassnekeep.anilist.api.MockedResponses
 import ru.glassnekeep.anilist.api.PageSizes
-import ru.glassnekeep.anilist.api.di.AnilistClient
 import ru.glassnekeep.anilist.api.makeRequestString
 import ru.glassnekeep.anilist.api.models.domain.schedule.AiringSchedule
 import ru.glassnekeep.anilist.api.models.query.AiringScheduleQuery
@@ -36,7 +35,7 @@ class AiringScheduleRemoteService @Inject constructor(
         )
         return AnilistRequest(
             query = requestString,
-            variables = ""
+            variables = MockedResponses.emptyVariables
         )
     }
 

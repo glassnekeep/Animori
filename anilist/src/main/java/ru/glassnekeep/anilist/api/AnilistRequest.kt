@@ -8,9 +8,12 @@ import ru.glassnekeep.anilist.api.models.query.PageQuery
 import ru.glassnekeep.anilist.api.models.query.QueryParameter
 
 @Serializable
+class Test
+
+@Serializable
 data class AnilistRequest(
     val query: String,
-    val variables: String
+    val variables: Test
 )
 
 val mediaQuery = MediaQuery(
@@ -88,6 +91,7 @@ fun formParametersString(
 fun formResponseString(response: DomainModel): String {
     return response.toString()
         .replaceFirst(Regex("[a-zA-Z]+\\("), "{")
+        .replace(Regex("=\\[[a-zA-Z]+\\("), "{")
         .replace(Regex("[a-zA-Z]+=null,? ?"), "")
         .replace(", )", ")")
         .replace(Regex("=[0-9a-zA-Z ]+,? ?"), " ")
@@ -107,5 +111,9 @@ fun formRequestString(
     return buildString {
         append(queryString, " {", pageString, parametersString, responseString, "}")
         if (page != null) append("}")
-    }.replace(Regex("=\\[]"), "").replace(Regex(","), "").replace(Regex("\\{\\}"), "")
+    }
+        .replace(Regex("=\\[]"), "")
+        .replace(Regex(","), "")
+        .replace(Regex("\\]"), "")
+        //.replace(Regex("\\{\\}"), "{ edges  { id }}")
 }

@@ -5,8 +5,11 @@ import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.coroutines.withContext
-import ru.glassnekeep.anilist.api.*
+import ru.glassnekeep.anilist.api.AnilistRequest
+import ru.glassnekeep.anilist.api.MockedResponses
+import ru.glassnekeep.anilist.api.PageSizes
 import ru.glassnekeep.anilist.api.di.AnilistClient
+import ru.glassnekeep.anilist.api.makeRequestString
 import ru.glassnekeep.anilist.api.models.domain.studio.Studio
 import ru.glassnekeep.anilist.api.models.query.PageQuery
 import ru.glassnekeep.anilist.api.models.query.StudioQuery
@@ -34,7 +37,7 @@ class StudioRemoteService @Inject constructor(
         )
         return AnilistRequest(
             query = requestString,
-            variables = ""
+            variables = MockedResponses.emptyVariables
         )
     }
 

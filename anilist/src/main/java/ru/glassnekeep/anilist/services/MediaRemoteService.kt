@@ -5,6 +5,7 @@ import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.coroutines.withContext
+import ru.glassnekeep.anilist.api.AnilistRequest
 import ru.glassnekeep.anilist.api.MockedResponses
 import ru.glassnekeep.anilist.api.PageSizes
 import ru.glassnekeep.anilist.api.enums.MediaSort
@@ -30,19 +31,17 @@ class MediaRemoteService @Inject constructor(
     private fun formGetMediaRequest(
         mediaQuery: MediaQuery,
         pageQuery: PageQuery? = null
-    )//: AnilistRequest {
-    : String {
+    ): AnilistRequest {
         val requestString = makeRequestString(
             query = mediaQuery,
             response = MockedResponses.mediaResponse,
             variables = emptyList(),
             page = pageQuery
         )
-//        return AnilistRequest(
-//            query = requestString,
-//            variables = ""
-//        )
-        return requestString
+        return AnilistRequest(
+            query = requestString,
+            variables = MockedResponses.emptyVariables
+        )
     }
 
     suspend fun getMedia(mediaQuery: MediaQuery): Media {
