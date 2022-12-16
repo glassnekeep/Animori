@@ -51,7 +51,7 @@ fun BigAnimeCard(
             GlideImage(
                 //painter = painterResource(id = R.drawable.magic_battle),
                 contentDescription = "Anime image",
-                modifier = Modifier.fillMaxHeight(),
+                modifier = Modifier.size(120.dp),
                 model = imageUrl,
                 contentScale = ContentScale.Crop
             )
@@ -66,6 +66,8 @@ fun BigAnimeCard(
                     text = title,
                     style = Typography.headlineMedium,
                     color = Color.White,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
                 Text(
                     text = description,
