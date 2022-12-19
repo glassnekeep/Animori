@@ -1,14 +1,19 @@
 package ru.glassnekeep.anilist.api
 
+import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.enums.MediaType
 import ru.glassnekeep.anilist.api.models.domain.DomainModel
 import ru.glassnekeep.anilist.api.models.query.MediaQuery
 import ru.glassnekeep.anilist.api.models.query.PageQuery
 import ru.glassnekeep.anilist.api.models.query.QueryParameter
 
+@Serializable
+class Test
+
+@Serializable
 data class AnilistRequest(
     val query: String,
-    val variables: String
+    val variables: Test
 )
 
 val mediaQuery = MediaQuery(
@@ -86,6 +91,7 @@ fun formParametersString(
 fun formResponseString(response: DomainModel): String {
     return response.toString()
         .replaceFirst(Regex("[a-zA-Z]+\\("), "{")
+        .replace(Regex("=\\[[a-zA-Z]+\\("), "{")
         .replace(Regex("[a-zA-Z]+=null,? ?"), "")
         .replace(", )", ")")
         .replace(Regex("=[0-9a-zA-Z ]+,? ?"), " ")
@@ -106,4 +112,8 @@ fun formRequestString(
         append(queryString, " {", pageString, parametersString, responseString, "}")
         if (page != null) append("}")
     }
+        .replace(Regex("=\\[]"), "")
+        .replace(Regex(","), "")
+        .replace(Regex("\\]"), "")
+        //.replace(Regex("\\{\\}"), "{ edges  { id }}")
 }

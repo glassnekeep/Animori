@@ -7,5 +7,5 @@ import dagger.Provides
 object CoreModule {
     @AppScope
     @Provides
-    fun provideCoroutineDispatchers() = AppDispatchers
+    fun provideCoroutineDispatchers(): AppDispatchers = AppDispatchers
 }

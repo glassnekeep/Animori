@@ -20,7 +20,7 @@ interface FeatureEntry {
 
 interface ComposableFeatureEntry : FeatureEntry {
 
-    fun NavGraphBuilder.Composable(navController: NavHostController, destinations: Destinations, modifier: Modifier) {
+    fun NavGraphBuilder.RootComposable(navController: NavHostController, destinations: Destinations, modifier: Modifier) {
         composable(featureRoute, arguments, deepLinks) { backStackEntry ->
             Register(navController, destinations, backStackEntry, modifier)
         }

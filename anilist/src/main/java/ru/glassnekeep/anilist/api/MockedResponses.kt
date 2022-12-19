@@ -2,18 +2,15 @@ package ru.glassnekeep.anilist.api
 
 import ru.glassnekeep.anilist.api.enums.*
 import ru.glassnekeep.anilist.api.models.domain.FuzzyDate
-import ru.glassnekeep.anilist.api.models.domain.character.CharacterConnection
-import ru.glassnekeep.anilist.api.models.domain.media.Media
-import ru.glassnekeep.anilist.api.models.domain.media.MediaConnection
-import ru.glassnekeep.anilist.api.models.domain.media.MediaCoverImage
-import ru.glassnekeep.anilist.api.models.domain.media.MediaTitle
+import ru.glassnekeep.anilist.api.models.domain.character.*
+import ru.glassnekeep.anilist.api.models.domain.media.*
+import ru.glassnekeep.anilist.api.models.domain.recommendation.Recommendation
 import ru.glassnekeep.anilist.api.models.domain.recommendation.RecommendationConnection
-import ru.glassnekeep.anilist.api.models.domain.studio.StudioConnection
-import ru.glassnekeep.anilist.api.models.domain.character.Character
-import ru.glassnekeep.anilist.api.models.domain.character.CharacterImage
-import ru.glassnekeep.anilist.api.models.domain.character.CharacterName
+import ru.glassnekeep.anilist.api.models.domain.recommendation.RecommendationEdge
 import ru.glassnekeep.anilist.api.models.domain.schedule.AiringSchedule
 import ru.glassnekeep.anilist.api.models.domain.studio.Studio
+import ru.glassnekeep.anilist.api.models.domain.studio.StudioConnection
+import ru.glassnekeep.anilist.api.models.domain.studio.StudioEdge
 
 object MockedResponses {
     val mediaResponse = Media(
@@ -41,12 +38,12 @@ object MockedResponses {
         coverImage = MediaCoverImage(" ", " ", " ", " "),
         bannerImage = " ",
         genres = emptyList(),
-        tags = emptyList(),
-        relations = MediaConnection(),
-        characters = CharacterConnection(),
-        studios = StudioConnection(),
+        tags = listOf(MediaTag(id = 0)),
+        relations = MediaConnection(edges = listOf(MediaEdge(id = 0))),
+        characters = CharacterConnection(edges = listOf(CharacterEdge(id = 0))),
+        studios = StudioConnection(edges = listOf(StudioEdge(id = 0))),
         isAdult = false,
-        recommendations = RecommendationConnection()
+        recommendations = RecommendationConnection(edges = listOf(RecommendationEdge(node = Recommendation(id = 0))))
     )
     val characterResponse = Character(
         id = 0,
@@ -71,4 +68,5 @@ object MockedResponses {
         isAnimationStudio = true,
         media = MediaConnection()
     )
+    val emptyVariables = Test()
 }

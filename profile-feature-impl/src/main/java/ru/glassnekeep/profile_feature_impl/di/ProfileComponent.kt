@@ -10,4 +10,9 @@ import ru.glassnekeep.user_data.UserDataProvider
     dependencies = [UserDataProvider::class],
     modules = [ProfileModule::class]
 )
-interface ProfileComponent: ProfileDataProvider
+interface ProfileComponent: ProfileDataProvider {
+    @Component.Factory
+    interface Factory {
+        fun create(userDataProvider: UserDataProvider): ProfileComponent
+    }
+}

@@ -5,5 +5,5 @@ import ru.glassnekeep.anilist.api.models.domain.DomainModel
 
 @Serializable
 data class MediaConnection(
-    val edges: MediaEdge? = null
+    val edges: List<MediaEdge>? = null
 ): DomainModel

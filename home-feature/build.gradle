@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    namespace 'ru.yandex.market.home_feature'
-    compileSdk 32
+    namespace 'ru.glassnekept.home_feature'
+    compileSdk 33
 
     defaultConfig {
         minSdk 24
-        targetSdk 32
+        targetSdk 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
