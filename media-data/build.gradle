@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'ru.glassnekeep.user_data'
+    namespace 'ru.glassnekeep.media_data'
     compileSdk 33
 
     defaultConfig {
@@ -32,8 +32,7 @@ android {
 }
 
 dependencies {
-    def dagger_version = '2.44'
-
+    def dagger_version = "2.44"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -45,5 +44,6 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     implementation project(":core")
+    implementation project(":anilist")
     implementation project(":network")
 }

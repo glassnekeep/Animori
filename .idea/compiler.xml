@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.7">
-      <module name="Animori.anilist" target="11" />
-      <module name="Animori.app" target="11" />
-      <module name="Animori.auth" target="11" />
-      <module name="Animori.basic-ui" target="11" />
-      <module name="Animori.core" target="11" />
-      <module name="Animori.design-system" target="11" />
-      <module name="Animori.home-feature" target="11" />
-      <module name="Animori.home-feature-impl" target="11" />
-      <module name="Animori.navigation" target="11" />
-      <module name="Animori.network" target="11" />
-      <module name="Animori.profile-feature" target="11" />
-      <module name="Animori.profile-feature-impl" target="11" />
-      <module name="Animori.shikimori" target="11" />
-      <module name="Animori.title_screen" target="11" />
-      <module name="Animori.title_screen_impl" target="11" />
-      <module name="Animori.user-data" target="11" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11" />
   </component>
 </project>
