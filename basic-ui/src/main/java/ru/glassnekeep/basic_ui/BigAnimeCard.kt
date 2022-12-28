@@ -42,7 +42,7 @@ fun BigAnimeCard(
             containerColor = Color.Gray
         ),
         onClick = {
-
+            navController.navigate("profile")
         }
     ) {
         Row(
