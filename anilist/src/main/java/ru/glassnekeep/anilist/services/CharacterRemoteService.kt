@@ -3,19 +3,17 @@ package ru.glassnekeep.anilist.services
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
-import io.ktor.client.utils.EmptyContent.contentType
 import io.ktor.http.*
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import ru.glassnekeep.anilist.api.*
 import ru.glassnekeep.anilist.api.di.AnilistClient
 import ru.glassnekeep.anilist.api.enums.CharacterSort
+import ru.glassnekeep.anilist.api.models.domain.character.Character
 import ru.glassnekeep.anilist.api.models.query.CharacterQuery
 import ru.glassnekeep.anilist.api.models.query.PageQuery
 import ru.glassnekeep.core.di.AppDispatchers
 import ru.glassnekeep.core.di.AppScope
 import javax.inject.Inject
-import ru.glassnekeep.anilist.api.models.domain.character.Character
 
 @AppScope
 class CharacterRemoteService @Inject constructor(
@@ -37,7 +35,7 @@ class CharacterRemoteService @Inject constructor(
         )
         return AnilistRequest(
             query = requestString,
-            variables = ""
+            variables = MockedResponses.emptyVariables
         )
     }
 

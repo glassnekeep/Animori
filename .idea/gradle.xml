@@ -19,11 +19,15 @@
             <option value="$PROJECT_DIR$/design-system" />
             <option value="$PROJECT_DIR$/home-feature" />
             <option value="$PROJECT_DIR$/home-feature-impl" />
+            <option value="$PROJECT_DIR$/media-data" />
+            <option value="$PROJECT_DIR$/media_data" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/profile-feature" />
             <option value="$PROJECT_DIR$/profile-feature-impl" />
             <option value="$PROJECT_DIR$/shikimori" />
+            <option value="$PROJECT_DIR$/title_screen" />
+            <option value="$PROJECT_DIR$/title_screen_impl" />
             <option value="$PROJECT_DIR$/user-data" />
           </set>
         </option>
