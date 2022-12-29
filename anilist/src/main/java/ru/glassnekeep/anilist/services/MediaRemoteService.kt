@@ -57,7 +57,6 @@ class MediaRemoteService @Inject constructor(
     suspend fun getMediaList(mediaQuery: MediaQuery): List<Media> {
         val pageQuery = PageQuery(page = 1, perPage = pageSize.large)
         val query = formGetMediaRequest(mediaQuery, pageQuery)
-        println(query)
         return withContext(dispatchers.io) {
             client.post {
                 contentType(contentType)
