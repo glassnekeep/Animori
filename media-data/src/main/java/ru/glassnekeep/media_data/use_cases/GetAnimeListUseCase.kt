@@ -1,7 +1,8 @@
-package ru.glassnekeep.media_data
+package ru.glassnekeep.media_data.use_cases
 
 import kotlinx.coroutines.withContext
 import ru.glassnekeep.core.di.AppDispatchers
+import ru.glassnekeep.media_data.MediaRepository
 import ru.glassnekeep.media_data.di.MediaDataScope
 import ru.glassnekeep.media_data.models.Anime
 import java.util.*

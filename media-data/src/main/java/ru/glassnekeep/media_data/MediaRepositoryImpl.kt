@@ -11,6 +11,10 @@ import javax.inject.Inject
 class MediaRepositoryImpl @Inject constructor(
     private val mediaRemoteService: MediaRemoteService
 ) : MediaRepository {
+    override suspend fun getAnime(id: Int): Media {
+        return mediaRemoteService.getMediaWithId(id)
+    }
+
     override suspend fun getAnimeList(): List<Media> {
         return mediaRemoteService.getMediaList(MediaQuery(type = MediaType.ANIME))
     }

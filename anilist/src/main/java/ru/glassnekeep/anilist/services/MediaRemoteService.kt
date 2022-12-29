@@ -67,7 +67,8 @@ class MediaRemoteService @Inject constructor(
 
     suspend fun getMediaWithId(id: Int): Media {
         val mediaQuery = MediaQuery(
-            id = id
+            id = id,
+            type = MediaType.ANIME
         )
         val query = formGetMediaRequest(mediaQuery)
         return withContext(dispatchers.io) {
