@@ -53,7 +53,7 @@ dependencies {
 
     api project(":home-feature")
     implementation project(":core")
-    implementation project(":anilist")
+    implementation project(":media-data")
     implementation project(":basic-ui")
     implementation project(':title_screen')
 }

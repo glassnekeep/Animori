@@ -102,4 +102,5 @@ dependencies {
     //TODO Удалить эту имплементацию, она для теста!!!
     implementation project(":anilist")
     implementation project(":basic-ui")
+    implementation project(":media-data")
 }

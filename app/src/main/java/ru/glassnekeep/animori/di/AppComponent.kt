@@ -3,14 +3,15 @@ package ru.glassnekeep.animori.di
 import dagger.Component
 import ru.glassnekeep.animori.AnimoriApplication
 import ru.glassnekeep.core.di.AppScope
+import ru.glassnekeep.core.di.CoreModule
 import ru.glassnekeep.home_feature_impl.HomeDataProvider
 import ru.glassnekeep.profile_feature_impl.ProfileDataProvider
-import ru.glassnekeep.profile_feature_impl.di.ProfileScope
 
+//TODO Отсюда нужно потом убрать MediaDataProvider и его зависимости внести в HomeDataProvider
 @AppScope
 @Component(
     dependencies = [ProfileDataProvider::class, HomeDataProvider::class],
-    modules = [NavigationModule::class]
+    modules = [CoreModule::class, NavigationModule::class]
 )
 interface AppComponent : AppProvider {
     @Component.Factory

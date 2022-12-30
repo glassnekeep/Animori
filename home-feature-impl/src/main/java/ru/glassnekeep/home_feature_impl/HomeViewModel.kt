@@ -6,20 +6,16 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import ru.glassnekeep.anilist.api.enums.MediaType
-import ru.glassnekeep.anilist.api.models.domain.media.Media
-import ru.glassnekeep.anilist.api.models.query.MediaQuery
-import ru.glassnekeep.anilist.services.MediaRemoteService
-import ru.glassnekeep.home_feature_impl.di.HomeScreenScope
+import ru.glassnekeep.media_data.models.Anime
+import ru.glassnekeep.media_data.use_cases.GetAnimeListUseCase
 import javax.inject.Inject
 
-@HomeScreenScope
 class HomeViewModel @Inject constructor(
-    mediaRemoteService: MediaRemoteService
+    private val getAnimeListUseCase: GetAnimeListUseCase
 ) : ViewModel() {
     sealed class HomeState {
         object Loading: HomeState()
-        data class Data(val data: List<Media>) : HomeState()
+        data class Data(val data: List<Anime>) : HomeState()
     }
 
     private var _state = MutableStateFlow<HomeState>(HomeState.Loading)
@@ -28,7 +24,7 @@ class HomeViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             while(isActive) {
-                val mediaList = mediaRemoteService.getMediaList(MediaQuery(type = MediaType.ANIME))
+                val mediaList = getAnimeListUseCase.execute()
                 _state.value = HomeState.Data(mediaList)
             }
         }

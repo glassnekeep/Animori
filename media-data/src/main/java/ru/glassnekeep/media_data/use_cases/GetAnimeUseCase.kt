@@ -5,15 +5,15 @@ import androidx.annotation.RequiresApi
 import kotlinx.coroutines.withContext
 import ru.glassnekeep.anilist.api.models.domain.FuzzyDate
 import ru.glassnekeep.core.di.AppDispatchers
+import ru.glassnekeep.core.di.AppScope
 import ru.glassnekeep.media_data.MediaRepository
-import ru.glassnekeep.media_data.di.MediaDataScope
 import ru.glassnekeep.media_data.models.AnimeDetail
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 import javax.inject.Inject
 
-@MediaDataScope
+@AppScope
 class GetAnimeUseCase @Inject constructor(
     private val mediaRepository: MediaRepository,
     private val dispatchers: AppDispatchers

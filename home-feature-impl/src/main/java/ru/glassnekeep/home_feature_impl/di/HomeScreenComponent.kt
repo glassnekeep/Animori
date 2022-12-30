@@ -1,21 +1,16 @@
 package ru.glassnekeep.home_feature_impl.di
 
-import dagger.Component
-import ru.glassnekeep.home_feature_impl.HomeDataProvider
+import dagger.Subcomponent
 import ru.glassnekeep.home_feature_impl.HomeViewModel
 
 @HomeScreenScope
-@Component(
+@Subcomponent(
     modules = [HomeScreenModule::class],
-    dependencies = [HomeDataProvider::class]
 )
 interface HomeScreenComponent {
     val viewModel: HomeViewModel
-
-    @Component.Factory
+    @Subcomponent.Factory
     interface Factory {
-        fun create(
-            parent: HomeDataProvider
-        ) : HomeScreenComponent
+        fun create() : HomeScreenComponent
     }
 }

@@ -37,9 +37,9 @@ fun HomeScreen(
                                 BigAnimeCard(
                                     navController = navController,
                                     destination = "",
-                                    description = anime.description ?: "",
-                                    imageUrl = anime.coverImage?.medium ?: "",
-                                    title = anime.title?.english ?: ""
+                                    description = anime.description,
+                                    imageUrl = anime.image,
+                                    title = anime.title
                                 )
                             }
                         }
