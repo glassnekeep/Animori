@@ -43,6 +43,12 @@ dependencies {
 
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
+    //For motion layout
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+
+    //For loading images with Glide
+    implementation "com.github.bumptech.glide:compose:1.0.0-alpha.1"
+
     implementation project(":core")
     implementation project(":anilist")
     implementation project(":basic-ui")
