@@ -52,4 +52,5 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
     implementation project(":core")
+    implementation project(":user-data")
 }

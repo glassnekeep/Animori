@@ -1,4 +1,4 @@
-package ru.glassnekeep.auth
+package ru.glassnekeep.auth.di
 
 import javax.inject.Scope
 

@@ -22,7 +22,7 @@ fun HomeScreen(
 ) {
     val state = viewModel.state.collectAsState().value
     Scaffold(
-        topBar = { HomeTopBar(title = "Test") },
+        topBar = { HomeTopBar(title = "Home") },
         content = {
 //            Column(modifier = Modifier.padding(it)) {
 //                Text(text = "TEST MAIN TEXT", fontFamily = FontFamily.Serif)
