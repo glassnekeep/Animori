@@ -1,6 +1,5 @@
 # Animori
 ### This Android application is my project for project practice in MEPHI (2nd year). 
-### As for now, work is suspended until the session in university ends. Then it will be continued. 
 ---
 ### Main features of the application
 * The user will be able to find out various information about an anime series (title) or a movie. 
