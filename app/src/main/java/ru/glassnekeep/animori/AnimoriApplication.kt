@@ -13,17 +13,6 @@ class AnimoriApplication : Application() {
 
     lateinit var appProvider: AppProvider
 
-//    val appProvider: AppProvider by lazy {
-//        DaggerAppComponent.factory().create(
-//            profileDataProvider = DaggerProfileComponent.factory().create(
-//                userDataProvider = DaggerUserDataComponent.factory().create()
-//            ),
-//            homeDataProvider = DaggerHomeComponent.factory().create(
-//                anilistDataProvider = DaggerAnilistComponent.factory().create()
-//            )
-//        )
-//    }
-
     override fun onCreate() {
         super.onCreate()
         appProvider = DaggerAppComponent.factory().create(

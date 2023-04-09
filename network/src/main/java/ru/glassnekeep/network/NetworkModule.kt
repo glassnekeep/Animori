@@ -6,17 +6,18 @@ import dagger.Provides
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
 import io.ktor.client.plugins.*
-import io.ktor.client.plugins.auth.*
-import io.ktor.client.plugins.auth.providers.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import ru.glassnekeep.core.di.AppScope
-import javax.inject.Named
 
 @Module
 object NetworkModule {
+
+    @AppScope
+    @Provides
+    fun provideContentType(): ContentType = ContentType.Application.Json
 
     //@ApiClient
     @AppScope

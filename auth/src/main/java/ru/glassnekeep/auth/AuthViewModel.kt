@@ -21,7 +21,7 @@ class AuthViewModel @Inject constructor(
 
     private var _state = MutableStateFlow<AuthState>(AuthState.Loading)
     val state = _state.asStateFlow()
-    val handler = CoroutineExceptionHandler { _, exception ->
+    private val handler = CoroutineExceptionHandler { _, exception ->
         Log.e(ERROR_TAG, exception.message ?: ERROR_MSG)
         _state.value = AuthState.Error(ERROR_MSG)
     }
