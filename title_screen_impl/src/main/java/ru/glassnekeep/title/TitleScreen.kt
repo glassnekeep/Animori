@@ -3,7 +3,6 @@ package ru.glassnekeep.title
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -22,7 +21,7 @@ import com.bumptech.glide.integration.compose.GlideImage
 import ru.glassnekeep.design_system.theme.Typography
 
 @Composable
-fun TitleScreen() {
+fun TitleScreen(viewModel: TitleScreenViewModel, modifier: Modifier = Modifier) {
     CollapsableToolbar()
 }
 
@@ -56,7 +55,6 @@ fun MotionComposeHeader(progress: Float, imageUrl: String, scrollableBody: @Comp
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun CollapsableToolbar() {
     Box(

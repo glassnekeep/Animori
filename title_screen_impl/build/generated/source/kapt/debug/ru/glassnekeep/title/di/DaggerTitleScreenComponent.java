@@ -2,6 +2,13 @@
 package ru.glassnekeep.title.di;
 
 import dagger.internal.DaggerGenerated;
+import dagger.internal.Preconditions;
+import ru.glassnekeep.core.di.AppDispatchers;
+import ru.glassnekeep.media_data.MediaDataProvider;
+import ru.glassnekeep.media_data.MediaRepository;
+import ru.glassnekeep.media_data.use_cases.GetAnimeListUseCase;
+import ru.glassnekeep.media_data.use_cases.GetAnimeUseCase;
+import ru.glassnekeep.title.TitleScreenViewModel;
 
 @DaggerGenerated
 @SuppressWarnings({
@@ -12,29 +19,56 @@ public final class DaggerTitleScreenComponent {
   private DaggerTitleScreenComponent() {
   }
 
-  public static Builder builder() {
-    return new Builder();
+  public static TitleScreenComponent.Factory factory() {
+    return new Factory();
   }
 
-  public static TitleScreenComponent create() {
-    return new Builder().build();
-  }
-
-  public static final class Builder {
-    private Builder() {
-    }
-
-    public TitleScreenComponent build() {
-      return new TitleScreenComponentImpl();
+  private static final class Factory implements TitleScreenComponent.Factory {
+    @Override
+    public TitleScreenComponent create(MediaDataProvider mediaDataProvider, int mediaId) {
+      Preconditions.checkNotNull(mediaDataProvider);
+      Preconditions.checkNotNull(mediaId);
+      return new TitleScreenComponentImpl(mediaDataProvider, mediaId);
     }
   }
 
   private static final class TitleScreenComponentImpl implements TitleScreenComponent {
+    private final MediaDataProvider mediaDataProvider;
+
+    private final Integer mediaId;
+
     private final TitleScreenComponentImpl titleScreenComponentImpl = this;
 
-    private TitleScreenComponentImpl() {
+    private TitleScreenComponentImpl(MediaDataProvider mediaDataProviderParam,
+        Integer mediaIdParam) {
+      this.mediaDataProvider = mediaDataProviderParam;
+      this.mediaId = mediaIdParam;
 
+    }
 
+    @Override
+    public GetAnimeUseCase getGetAnimeUseCase() {
+      return Preconditions.checkNotNullFromComponent(mediaDataProvider.getGetAnimeUseCase());
+    }
+
+    @Override
+    public GetAnimeListUseCase getGetAnimeListUseCase() {
+      return Preconditions.checkNotNullFromComponent(mediaDataProvider.getGetAnimeListUseCase());
+    }
+
+    @Override
+    public MediaRepository getMediaRepository() {
+      return Preconditions.checkNotNullFromComponent(mediaDataProvider.getMediaRepository());
+    }
+
+    @Override
+    public AppDispatchers getDispatchers() {
+      return Preconditions.checkNotNullFromComponent(mediaDataProvider.getDispatchers());
+    }
+
+    @Override
+    public TitleScreenViewModel getViewModel() {
+      return new TitleScreenViewModel(Preconditions.checkNotNullFromComponent(mediaDataProvider.getGetAnimeUseCase()), mediaId);
     }
   }
 }
