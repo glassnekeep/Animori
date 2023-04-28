@@ -16,6 +16,7 @@ import ru.glassnekeep.design_system.theme.AnimoriTheme
 import ru.glassnekeep.home_feature_impl.LocalHomeDataProvider
 import ru.glassnekeep.media_data.LocalMediaDataProvider
 import ru.glassnekeep.profile_feature_impl.LocalProfileDataProvider
+import ru.glassnekeep.title.LocalTitleDataProvider
 import ru.glassnekeep.user_data.LocalUserDataProvider
 
 class MainActivity : ComponentActivity() {
@@ -29,7 +30,8 @@ class MainActivity : ComponentActivity() {
                     LocalProfileDataProvider provides application.appProvider,
                     LocalUserDataProvider provides application.appProvider,
                     LocalMediaDataProvider provides application.appProvider,
-                    LocalHomeDataProvider provides application.appProvider
+                    LocalHomeDataProvider provides application.appProvider,
+                    LocalTitleDataProvider provides application.appProvider
                 ) {
                     StartScreen()
                 }

@@ -5,9 +5,10 @@ import ru.glassnekeep.core.Destinations
 import ru.glassnekeep.home_feature_impl.HomeDataProvider
 import ru.glassnekeep.media_data.MediaDataProvider
 import ru.glassnekeep.profile_feature_impl.ProfileDataProvider
+import ru.glassnekeep.title.TitleDataProvider
 import ru.glassnekeep.user_data.UserDataProvider
 
-interface AppProvider : ProfileDataProvider, UserDataProvider, HomeDataProvider, MediaDataProvider {
+interface AppProvider : ProfileDataProvider, UserDataProvider, HomeDataProvider, MediaDataProvider, TitleDataProvider {
     val destinations: Destinations
 }
 

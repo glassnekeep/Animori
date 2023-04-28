@@ -12,21 +12,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavController
 import ru.glassnekeep.basic_ui.BigAnimeCard
+import ru.glassnekeep.media_data.models.Anime
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     navController: NavController,
-    viewModel: HomeViewModel
+    viewModel: HomeViewModel,
+    cardOnClick: (Anime) -> Unit,
 ) {
     val state = viewModel.state.collectAsState().value
     Scaffold(
         topBar = { HomeTopBar(title = "Home") },
         content = {
-//            Column(modifier = Modifier.padding(it)) {
-//                Text(text = "TEST MAIN TEXT", fontFamily = FontFamily.Serif)
-//            }
             LazyColumn(
                 modifier = Modifier.fillMaxWidth(),
                 contentPadding = it,
@@ -39,7 +38,8 @@ fun HomeScreen(
                                     destination = "",
                                     description = anime.description,
                                     imageUrl = anime.image,
-                                    title = anime.title
+                                    title = anime.title,
+                                    cardOnClick = { cardOnClick(anime) }
                                 )
                             }
                         }

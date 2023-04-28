@@ -32,26 +32,26 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion "1.3.1"
+        kotlinCompilerExtensionVersion "1.4.4"
     }
 }
 
 dependencies {
     def material_version = "1.1.0-alpha02"
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     //TODO Дублирование зависимостей core модуля, потом нужно будет подумать, что куда лучше поместить и исправить все
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation "androidx.compose.material:material:1.4.0-alpha02"
-    implementation 'androidx.compose.material:material-icons-core:1.2.1'
+    implementation "androidx.compose.material:material:1.5.0-alpha02"
+    implementation 'androidx.compose.material:material-icons-core:1.4.1'
     implementation "androidx.compose.material3:material3:$material_version"
     implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:1.4.0-alpha02"
-    implementation 'androidx.activity:activity-compose:1.6.0'
+    implementation "androidx.compose.ui:ui-tooling-preview:1.5.0-alpha02"
+    implementation 'androidx.activity:activity-compose:1.7.0'
 }

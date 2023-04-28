@@ -2,15 +2,17 @@ package ru.glassnekeep.title_screen
 
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
-import ru.glassnekeep.core.ComposableFeatureEntry
+import ru.glassnekeep.core.AggregateFeatureEntry
 
-abstract class TitleEntry : ComposableFeatureEntry {
+abstract class TitleEntry : AggregateFeatureEntry {
 
-    final override val featureRoute = "title/{$ARG_MEDIA_ID}"
+    final override val featureRoute = "media-details/{$ARG_MEDIA_ID}"
 
-    final override val arguments = listOf(navArgument(ARG_MEDIA_ID) {
-        type = NavType.IntType
-    })
+    final override val arguments = listOf(
+        navArgument(ARG_MEDIA_ID) {
+            type = NavType.IntType
+        }
+    )
 
     fun destination(mediaId: Int) = "media-details/$mediaId"
 

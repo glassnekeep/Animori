@@ -10,13 +10,20 @@ import ru.glassnekeep.profile_feature_impl.ProfileDataProvider
 //TODO Отсюда нужно потом убрать MediaDataProvider и его зависимости внести в HomeDataProvider
 @AppScope
 @Component(
-    dependencies = [ProfileDataProvider::class, HomeDataProvider::class],
-    modules = [CoreModule::class, NavigationModule::class]
+    dependencies = [
+        ProfileDataProvider::class,
+        HomeDataProvider::class],
+    modules = [
+        CoreModule::class,
+        NavigationModule::class]
 )
 interface AppComponent : AppProvider {
     @Component.Factory
     interface Factory {
-        fun create(profileDataProvider: ProfileDataProvider, homeDataProvider: HomeDataProvider): AppComponent
+        fun create(
+            profileDataProvider: ProfileDataProvider,
+            homeDataProvider: HomeDataProvider
+        ): AppComponent
     }
     fun inject(application: AnimoriApplication)
 }

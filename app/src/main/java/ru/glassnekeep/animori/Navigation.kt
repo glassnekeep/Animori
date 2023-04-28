@@ -1,8 +1,5 @@
 package ru.glassnekeep.animori
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -13,19 +10,16 @@ import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import ru.glassnekeep.animori.di.LocalAppProvider
-import ru.glassnekeep.design_system.theme.md_theme_light_onPrimary
 import ru.glassnekeep.core.find
 import ru.glassnekeep.home_feature.HomeEntry
 import ru.glassnekeep.profile_feature.ProfileEntry
+import ru.glassnekeep.title_screen.TitleEntry
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -33,12 +27,16 @@ fun Navigation(navController: NavHostController) {
 
     val profileScreen = destinations.find<ProfileEntry>()
     val homeScreen = destinations.find<HomeEntry>()
+    val titleScreen = destinations.find<TitleEntry>()
 
     NavHost(navController = navController, startDestination = "@home") {
         with(homeScreen) {
             navigation(navController, destinations)
         }
         with(profileScreen) {
+            navigation(navController, destinations)
+        }
+        with(titleScreen) {
             navigation(navController, destinations)
         }
     }
