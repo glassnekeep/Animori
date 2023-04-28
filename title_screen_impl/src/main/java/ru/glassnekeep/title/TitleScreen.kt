@@ -29,7 +29,7 @@ fun TitleScreen(viewModel: TitleScreenViewModel, modifier: Modifier = Modifier) 
 @Composable
 fun MotionComposeHeader(progress: Float, imageUrl: String, scrollableBody: @Composable () -> Unit) {
     MotionLayout(
-        start = startConstraints(),
+        start = startConstraintSet(),
         end = endConstraintSet(),
         progress = progress,
         modifier = Modifier.fillMaxWidth()
@@ -61,10 +61,10 @@ fun CollapsableToolbar() {
         modifier = Modifier
             .fillMaxSize()
     ) {
-        val animateToEnd = false
+        //val animateToEnd by remember { mutableStateOf(true) }
         var animateToCollapsedState by remember { mutableStateOf(false) }
         val progress by animateFloatAsState(
-            targetValue = if (animateToEnd) 1f else 0f,
+            targetValue = if (animateToCollapsedState) 1f else 0f,
             animationSpec = tween(1000)
         )
         Column() {
@@ -79,14 +79,14 @@ fun CollapsableToolbar() {
             onClick = { animateToCollapsedState = animateToCollapsedState.not() },
             Modifier
                 .align(Alignment.BottomCenter)
-                .padding(16.dp)
+                .padding(32.dp)
         ) {
             Text(text = if (!animateToCollapsedState) "Collapse" else "Expand")
         }
     }
 }
 
-private fun startConstraints() = ConstraintSet {
+private fun startConstraintSet() = ConstraintSet {
     val poster = createRefFor("poster")
     val title = createRefFor("title")
     val content = createRefFor("content")
