@@ -1,15 +1,17 @@
 package ru.glassnekeep.title
 
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Button
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.FractionalThreshold
+import androidx.compose.material.rememberSwipeableState
+import androidx.compose.material.swipeable
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layoutId
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintSet
@@ -43,7 +45,9 @@ fun MotionComposeHeader(progress: Float, imageUrl: String, scrollableBody: @Comp
         )
         Text(
             text = "Text",
-            modifier = Modifier.layoutId("title").wrapContentHeight(),
+            modifier = Modifier
+                .layoutId("title")
+                .wrapContentHeight(),
             style = Typography.headlineMedium,
             textAlign = TextAlign.Center
         )
@@ -55,33 +59,40 @@ fun MotionComposeHeader(progress: Float, imageUrl: String, scrollableBody: @Comp
     }
 }
 
+enum class SwipingStates {
+    EXPANDED,
+    COLLAPSED
+}
+
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun CollapsableToolbar() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        //val animateToEnd by remember { mutableStateOf(true) }
-        var animateToCollapsedState by remember { mutableStateOf(false) }
-        val progress by animateFloatAsState(
-            targetValue = if (animateToCollapsedState) 1f else 0f,
-            animationSpec = tween(1000)
-        )
-        Column() {
-            MotionComposeHeader(
-                progress = progress,
-                imageUrl = "https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx1-CXtrrkMpJ8Zq.png"
-            ) {
-                //For now we pass no srollable content to header
-            }
-        }
-        Button(
-            onClick = { animateToCollapsedState = animateToCollapsedState.not() },
-            Modifier
-                .align(Alignment.BottomCenter)
-                .padding(32.dp)
+    val swipingState = rememberSwipeableState(initialValue = SwipingStates.EXPANDED)
+    
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val heightInPx = with(LocalDensity.current) { maxHeight.toPx() }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .swipeable(
+                    state = swipingState,
+                    thresholds = { _, _ -> FractionalThreshold(0.5f) },
+                    orientation = Orientation.Vertical,
+                    anchors = mapOf(
+                        0f to SwipingStates.COLLAPSED,
+                        800f to SwipingStates.EXPANDED,
+                    )
+                )
         ) {
-            Text(text = if (!animateToCollapsedState) "Collapse" else "Expand")
+            Column() {
+                MotionComposeHeader(
+                    progress =  if (swipingState.progress.to == SwipingStates.COLLAPSED) swipingState.progress.fraction else 1f - swipingState.progress.fraction,
+                    imageUrl = "https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx1-CXtrrkMpJ8Zq.png"
+                ) {
+                    //For now we pass no srollable content to header
+                }
+            }
         }
     }
 }
