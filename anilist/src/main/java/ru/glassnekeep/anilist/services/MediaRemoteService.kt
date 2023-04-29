@@ -11,7 +11,8 @@ import ru.glassnekeep.anilist.api.PageSizes
 import ru.glassnekeep.anilist.api.enums.MediaSort
 import ru.glassnekeep.anilist.api.enums.MediaType
 import ru.glassnekeep.anilist.api.makeRequestString
-import ru.glassnekeep.anilist.api.models.domain.ResponseList
+import ru.glassnekeep.anilist.api.models.domain.ResponseListRaw
+import ru.glassnekeep.anilist.api.models.domain.mapToResponseList
 import ru.glassnekeep.anilist.api.models.domain.media.Media
 import ru.glassnekeep.anilist.api.models.query.MediaQuery
 import ru.glassnekeep.anilist.api.models.query.PageQuery
@@ -61,7 +62,7 @@ class MediaRemoteService @Inject constructor(
             client.post {
                 contentType(contentType)
                 setBody(query)
-            }.body<ResponseList>().data.page.media ?: emptyList()
+            }.body<ResponseListRaw>().mapToResponseList().data.page.media ?: emptyList()
         }
     }
 
