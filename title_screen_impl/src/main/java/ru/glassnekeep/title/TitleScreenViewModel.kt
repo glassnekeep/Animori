@@ -32,7 +32,7 @@ class TitleScreenViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-
+            loadMedia()
         }
     }
 

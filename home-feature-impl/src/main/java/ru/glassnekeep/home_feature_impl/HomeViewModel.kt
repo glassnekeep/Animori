@@ -23,7 +23,7 @@ class HomeViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            while(isActive) {
+            if (isActive) {
                 val mediaList = getAnimeListUseCase.execute()
                 _state.value = HomeState.Data(mediaList)
             }
