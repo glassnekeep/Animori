@@ -4,14 +4,15 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import ru.glassnekeep.anilist.api.models.domain.exceptions.ParsingException
 import ru.glassnekeep.anilist.api.models.domain.exceptions.TooManyRequestsException
+import ru.glassnekeep.anilist.api.models.domain.media.Media
 
 @Serializable
-data class ResponseListRaw(
-    val data: Data? = null,
-    val errors: List<Error>? = null
+data class ResponseSingleRaw(
+    val data: DataSingle? = null,
+    val errors: List<Error>? = null,
 )
 
-fun ResponseListRaw.mapToResponseList(): ResponseList {
+fun ResponseSingleRaw.mapToResponseSingle(): ResponseSingle {
     if (errors != null) {
         val error = errors.first()
         val message = error.message
@@ -20,21 +21,15 @@ fun ResponseListRaw.mapToResponseList(): ResponseList {
             else -> { ParsingException(message) }
         }
     }
-    if (data != null) return ResponseList(data) else throw ParsingException("No data passed on successful request")
+    if (data != null) return ResponseSingle(data) else throw ParsingException("No data passed on successful request")
 }
 
 @Serializable
-data class ResponseList(
-    val data: Data
+data class ResponseSingle(
+    @SerialName("data") val data: DataSingle
 )
 
 @Serializable
-data class Data(
-    @SerialName("Page") val page: Page,
-)
-
-@Serializable
-data class Error(
-    val message: String,
-    val status: Int
+data class DataSingle(
+    @SerialName("Media") val media: Media,
 )

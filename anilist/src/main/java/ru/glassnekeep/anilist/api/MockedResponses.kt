@@ -38,7 +38,7 @@ object MockedResponses {
         coverImage = MediaCoverImage(" ", " ", " ", " "),
         bannerImage = " ",
         genres = emptyList(),
-        tags = listOf(MediaTag(id = 0)),
+        tags = listOf(MediaTag(id = 0, name = " ")),
         relations = MediaConnection(edges = listOf(MediaEdge(id = 0))),
         characters = CharacterConnection(edges = listOf(CharacterEdge(id = 0))),
         studios = StudioConnection(edges = listOf(StudioEdge(id = 0))),

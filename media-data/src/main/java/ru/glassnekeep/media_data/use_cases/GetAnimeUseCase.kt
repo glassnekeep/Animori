@@ -39,11 +39,11 @@ class GetAnimeUseCase @Inject constructor(
                     seasonInt = seasonInt!!,
                     episodes = episodes!!,
                     duration = duration!!,
-                    volumes = volumes!!,
+                    volumes = volumes,
                     countryOfOrigin = countryOfOrigin!!,
                     isLicensed = isLicensed!!,
                     source = source.toString().toLowerCaseWithFirstCapitalLetter(),
-                    hashtag = hashtag!!,
+                    hashtag = hashtag,
                     coverImage = coverImage!!.large ?: coverImage!!.medium!!,
                     bannerImage = bannerImage!!,
                     genres = genres!!,
@@ -63,12 +63,18 @@ class GetAnimeUseCase @Inject constructor(
         val string = buildString {
             append(year)
             append("-")
-            append(month)
+            if (month != null && month!! > 9) append(month) else {
+                append(0)
+                append(month)
+            }
             append("-")
-            append(day)
+            if (day != null && day!! > 9) append(day) else {
+                append(0)
+                append(day)
+            }
         }
         val notFormattedDate = LocalDate.parse(string)
-        val formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         return notFormattedDate.format(formatter)
     }
 }

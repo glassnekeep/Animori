@@ -2,10 +2,9 @@ package ru.glassnekeep.title
 
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.FractionalThreshold
-import androidx.compose.material.rememberSwipeableState
-import androidx.compose.material.swipeable
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -24,6 +23,7 @@ import androidx.constraintlayout.compose.ExperimentalMotionApi
 import androidx.constraintlayout.compose.MotionLayout
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import ru.glassnekeep.design_system.theme.Dimens
 import ru.glassnekeep.design_system.theme.Typography
 import ru.glassnekeep.media_data.models.AnimeDetail
 
@@ -39,11 +39,12 @@ fun MotionComposeHeader(progress: Float, imageUrl: String, scrollableBody: @Comp
         start = startConstraintSet(),
         end = endConstraintSet(),
         progress = progress,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxSize()
     ) {
         GlideImage(
             contentDescription = "Anime image",
-            modifier = Modifier.layoutId("poster"),
+            modifier = Modifier
+                .layoutId("poster"),
             model = imageUrl,
             contentScale = ContentScale.FillWidth,
             alpha = 1f - progress,
@@ -53,8 +54,9 @@ fun MotionComposeHeader(progress: Float, imageUrl: String, scrollableBody: @Comp
             modifier = Modifier
                 .layoutId("title")
                 .wrapContentHeight(),
-            style = Typography.headlineMedium,
-            textAlign = TextAlign.Center
+            style = Typography.headlineLarge,
+            textAlign = TextAlign.Center,
+            color = Color.Green
         )
         Box(
             Modifier.layoutId("content")
@@ -109,7 +111,9 @@ private fun LoadingState() {
 @Composable
 private fun DataState(anime: AnimeDetail) {
     val swipingState = rememberSwipeableState(initialValue = SwipingStates.EXPANDED)
-    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+    BoxWithConstraints(
+        modifier = Modifier.fillMaxSize()
+    ) {
         val heightInPx = with(LocalDensity.current) { maxHeight.toPx() }
         Box(
             modifier = Modifier
@@ -124,12 +128,42 @@ private fun DataState(anime: AnimeDetail) {
                     )
                 )
         ) {
-            Column() {
+            Column(
+                modifier = Modifier
+            ) {
                 MotionComposeHeader(
                     progress = if (swipingState.progress.to == SwipingStates.COLLAPSED) swipingState.progress.fraction else 1f - swipingState.progress.fraction,
-                    imageUrl = anime.coverImage
+                    imageUrl = anime.coverImage,
                 ) {
-
+                    Column(
+                        modifier = Modifier
+                    ) {
+                        Text(
+                            textAlign = TextAlign.Center,
+                            style = Typography.bodySmall,
+                            modifier = Modifier
+                                .padding(Dimens.extraSmall),
+                            text = Texts.SERIES
+                        )
+                        Row(
+                            modifier = Modifier
+                        ) {
+                            repeat(5) {
+                                Icon(
+                                    imageVector = Icons.Outlined.Star,
+                                    contentDescription = Texts.STAR,
+                                )
+                            }
+                            Text(
+                                textAlign = TextAlign.Center,
+                                style = Typography.bodySmall,
+                                modifier = Modifier
+                                    .padding(Dimens.extraSmall)
+                                ,
+                                text = Texts.RATING
+                            )
+                        }
+                    }
                 }
             }
         }
