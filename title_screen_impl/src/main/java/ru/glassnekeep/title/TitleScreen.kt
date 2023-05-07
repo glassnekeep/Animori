@@ -16,6 +16,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
@@ -23,6 +24,7 @@ import androidx.constraintlayout.compose.ExperimentalMotionApi
 import androidx.constraintlayout.compose.MotionLayout
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import ru.glassnekeep.basic_ui.ExpandingText
 import ru.glassnekeep.design_system.theme.Dimens
 import ru.glassnekeep.design_system.theme.Typography
 import ru.glassnekeep.media_data.models.AnimeDetail
@@ -34,7 +36,11 @@ fun TitleScreen(viewModel: TitleScreenViewModel, modifier: Modifier = Modifier) 
 
 @OptIn(ExperimentalMotionApi::class, ExperimentalGlideComposeApi::class)
 @Composable
-fun MotionComposeHeader(progress: Float, imageUrl: String, scrollableBody: @Composable () -> Unit) {
+fun MotionComposeHeader(
+    progress: Float,
+    imageUrl: String,
+    title: String,
+    scrollableBody: @Composable () -> Unit) {
     MotionLayout(
         start = startConstraintSet(),
         end = endConstraintSet(),
@@ -44,19 +50,20 @@ fun MotionComposeHeader(progress: Float, imageUrl: String, scrollableBody: @Comp
         GlideImage(
             contentDescription = "Anime image",
             modifier = Modifier
-                .layoutId("poster"),
+                .layoutId("poster")
+                .heightIn(0.dp, 400.dp),
             model = imageUrl,
             contentScale = ContentScale.FillWidth,
             alpha = 1f - progress,
         )
         Text(
-            text = "Text",
+            text = title,
             modifier = Modifier
                 .layoutId("title")
                 .wrapContentHeight(),
             style = Typography.headlineLarge,
             textAlign = TextAlign.Center,
-            color = Color.Green
+            overflow = TextOverflow.Ellipsis
         )
         Box(
             Modifier.layoutId("content")
@@ -109,7 +116,9 @@ private fun LoadingState() {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-private fun DataState(anime: AnimeDetail) {
+private fun DataState(
+    anime: AnimeDetail,
+) {
     val swipingState = rememberSwipeableState(initialValue = SwipingStates.EXPANDED)
     BoxWithConstraints(
         modifier = Modifier.fillMaxSize()
@@ -134,15 +143,16 @@ private fun DataState(anime: AnimeDetail) {
                 MotionComposeHeader(
                     progress = if (swipingState.progress.to == SwipingStates.COLLAPSED) swipingState.progress.fraction else 1f - swipingState.progress.fraction,
                     imageUrl = anime.coverImage,
+                    title = anime.title
                 ) {
                     Column(
                         modifier = Modifier
+                            .padding(Dimens.verySmall)
                     ) {
                         Text(
                             textAlign = TextAlign.Center,
                             style = Typography.bodySmall,
-                            modifier = Modifier
-                                .padding(Dimens.extraSmall),
+                            modifier = Modifier,
                             text = Texts.SERIES
                         )
                         Row(
@@ -152,6 +162,7 @@ private fun DataState(anime: AnimeDetail) {
                                 Icon(
                                     imageVector = Icons.Outlined.Star,
                                     contentDescription = Texts.STAR,
+                                    tint = MaterialTheme.colors.onBackground
                                 )
                             }
                             Text(
@@ -163,6 +174,19 @@ private fun DataState(anime: AnimeDetail) {
                                 text = Texts.RATING
                             )
                         }
+//                        Text(
+//                            textAlign = TextAlign.Left,
+//                            style = Typography.bodySmall,
+//                            modifier = Modifier,
+//                            text = anime.description,
+//                            //maxLines = TextParams.MAX_LINES_DESCRIPTION,
+//                            overflow = TextOverflow.Ellipsis,
+//                        )
+                        ExpandingText(
+                            modifier = Modifier,
+                            text = anime.description,
+                            maxLines = TextParams.MAX_LINES_DESCRIPTION
+                        )
                     }
                 }
             }
@@ -213,6 +237,7 @@ private fun endConstraintSet() = ConstraintSet {
         top.linkTo(parent.top, 8.dp)
         end.linkTo(parent.end)
         bottom.linkTo(poster.bottom)
+        height = Dimension.value(48.dp)
     }
 
     constrain(content) {
