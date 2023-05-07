@@ -2,9 +2,13 @@ package ru.glassnekeep.anilist.api.models.domain
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import ru.glassnekeep.anilist.api.models.domain.character.Character
 import ru.glassnekeep.anilist.api.models.domain.exceptions.ParsingException
 import ru.glassnekeep.anilist.api.models.domain.exceptions.TooManyRequestsException
 import ru.glassnekeep.anilist.api.models.domain.media.Media
+import ru.glassnekeep.anilist.api.models.domain.recommendation.Recommendation
+import ru.glassnekeep.anilist.api.models.domain.schedule.AiringSchedule
+import ru.glassnekeep.anilist.api.models.domain.studio.Studio
 
 @Serializable
 data class ResponseSingleRaw(
@@ -31,5 +35,9 @@ data class ResponseSingle(
 
 @Serializable
 data class DataSingle(
-    @SerialName("Media") val media: Media,
+    @SerialName("Media") val media: Media? = null,
+    @SerialName("AiringSchedule") val schedule: AiringSchedule? = null,
+    @SerialName("Recommendation") val recommendation: Recommendation? = null,
+    @SerialName("Character") val character: Character? = null,
+    @SerialName("Studio") val studio: Studio? = null,
 )

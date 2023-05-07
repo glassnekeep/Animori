@@ -1,4 +1,4 @@
-package ru.glassnekeep.media_data
+package ru.glassnekeep.media_data.repository
 
 import ru.glassnekeep.anilist.api.enums.MediaType
 import ru.glassnekeep.anilist.api.models.domain.media.Media

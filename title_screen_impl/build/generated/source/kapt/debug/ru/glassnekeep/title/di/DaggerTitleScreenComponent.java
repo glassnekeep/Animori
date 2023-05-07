@@ -5,7 +5,7 @@ import dagger.internal.DaggerGenerated;
 import dagger.internal.Preconditions;
 import ru.glassnekeep.core.di.AppDispatchers;
 import ru.glassnekeep.media_data.MediaDataProvider;
-import ru.glassnekeep.media_data.MediaRepository;
+import ru.glassnekeep.media_data.repository.MediaRepository;
 import ru.glassnekeep.media_data.use_cases.GetAnimeListUseCase;
 import ru.glassnekeep.media_data.use_cases.GetAnimeUseCase;
 import ru.glassnekeep.title.TitleScreenViewModel;

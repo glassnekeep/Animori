@@ -6,8 +6,8 @@ import kotlinx.coroutines.withContext
 import ru.glassnekeep.anilist.api.models.domain.FuzzyDate
 import ru.glassnekeep.core.di.AppDispatchers
 import ru.glassnekeep.core.di.AppScope
-import ru.glassnekeep.media_data.MediaRepository
 import ru.glassnekeep.media_data.models.AnimeDetail
+import ru.glassnekeep.media_data.repository.MediaRepository
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*

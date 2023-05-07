@@ -3,8 +3,8 @@ package ru.glassnekeep.media_data.use_cases
 import kotlinx.coroutines.withContext
 import ru.glassnekeep.core.di.AppDispatchers
 import ru.glassnekeep.core.di.AppScope
-import ru.glassnekeep.media_data.MediaRepository
 import ru.glassnekeep.media_data.models.Anime
+import ru.glassnekeep.media_data.repository.MediaRepository
 import java.util.*
 import javax.inject.Inject
 

@@ -2,6 +2,7 @@ package ru.glassnekeep.media_data
 
 import androidx.compose.runtime.compositionLocalOf
 import ru.glassnekeep.core.di.AppDispatchers
+import ru.glassnekeep.media_data.repository.MediaRepository
 import ru.glassnekeep.media_data.use_cases.GetAnimeListUseCase
 import ru.glassnekeep.media_data.use_cases.GetAnimeUseCase
 

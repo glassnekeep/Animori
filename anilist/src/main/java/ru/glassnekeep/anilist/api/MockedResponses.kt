@@ -68,5 +68,11 @@ object MockedResponses {
         isAnimationStudio = true,
         media = MediaConnection()
     )
+    val recommendationResponse = Recommendation(
+        id = 0,
+        rating = 0,
+        media = mediaResponse,
+        mediaRecommendation = mediaResponse
+    )
     val emptyVariables = Test()
 }

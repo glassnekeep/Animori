@@ -1,7 +1,7 @@
 package ru.glassnekeep.home_feature_impl
 
 import androidx.compose.runtime.compositionLocalOf
-import ru.glassnekeep.media_data.MediaRepository
+import ru.glassnekeep.media_data.repository.MediaRepository
 import ru.glassnekeep.media_data.use_cases.GetAnimeListUseCase
 import ru.glassnekeep.media_data.use_cases.GetAnimeUseCase
 

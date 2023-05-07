@@ -53,7 +53,7 @@ class MediaRemoteService @Inject constructor(
             client.post {
                 contentType(contentType)
                 setBody(query)
-            }.body()
+            }.body<ResponseSingleRaw>().mapToResponseSingle().data.media!!
         }
     }
 
@@ -78,7 +78,7 @@ class MediaRemoteService @Inject constructor(
             client.post {
                 contentType(contentType)
                 setBody(query)
-            }.body<ResponseSingleRaw>().mapToResponseSingle().data.media
+            }.body<ResponseSingleRaw>().mapToResponseSingle().data.media!!
         }
     }
 
