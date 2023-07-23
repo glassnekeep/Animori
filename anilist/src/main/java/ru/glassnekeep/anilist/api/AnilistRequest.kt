@@ -115,5 +115,6 @@ fun formRequestString(
         .replace(Regex("=\\[]"), "")
         .replace(Regex(","), "")
         .replace(Regex("\\]"), "")
+        .replace(Regex("="), "")
         //.replace(Regex("\\{\\}"), "{ edges  { id }}")
 }

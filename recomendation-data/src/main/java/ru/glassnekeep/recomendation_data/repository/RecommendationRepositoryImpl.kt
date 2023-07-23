@@ -1,17 +1,17 @@
 package ru.glassnekeep.recomendation_data.repository
 
 import ru.glassnekeep.anilist.api.models.domain.recommendation.Recommendation
-import ru.glassnekeep.anilist.services.RecommendationService
+import ru.glassnekeep.anilist.services.RecommendationRemoteService
 import javax.inject.Inject
 
 class RecommendationRepositoryImpl @Inject constructor(
-    private val recommendationService: RecommendationService
+    private val recommendationRemoteService: RecommendationRemoteService
 ) : RecommendationRepository {
     override suspend fun getRecommendation(id: Int): Recommendation {
-        return recommendationService.getRecommendationWithId(id)
+        return recommendationRemoteService.getRecommendationWithId(id)
     }
 
     override suspend fun getRecommendationWithMediaId(mediaId: Int): Recommendation {
-        return recommendationService.getRecommendationWithMediaId(mediaId)
+        return recommendationRemoteService.getRecommendationWithMediaId(mediaId)
     }
 }

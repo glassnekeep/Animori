@@ -12,4 +12,4 @@ data class RecommendationQuery(
     val rating_greater: Int? = null,
     val rating_lesser: Int? = null,
     val sort: List<RecommendationSort>? = null
-)
+) : QueryParameter

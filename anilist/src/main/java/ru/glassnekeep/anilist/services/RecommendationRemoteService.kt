@@ -1,10 +1,17 @@
 package ru.glassnekeep.anilist.services
 
-import io.ktor.client.*
-import io.ktor.client.call.*
-import io.ktor.client.request.*
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
 import kotlinx.coroutines.withContext
-import ru.glassnekeep.anilist.api.*
+import ru.glassnekeep.anilist.api.AnilistRequest
+import ru.glassnekeep.anilist.api.MockedResponses
+import ru.glassnekeep.anilist.api.PageSizes
+import ru.glassnekeep.anilist.api.makeRequestString
+import ru.glassnekeep.anilist.api.mediaQuery
 import ru.glassnekeep.anilist.api.models.domain.ResponseListRaw
 import ru.glassnekeep.anilist.api.models.domain.ResponseSingleRaw
 import ru.glassnekeep.anilist.api.models.domain.mapToResponseList
@@ -12,13 +19,12 @@ import ru.glassnekeep.anilist.api.models.domain.mapToResponseSingle
 import ru.glassnekeep.anilist.api.models.domain.recommendation.Recommendation
 import ru.glassnekeep.anilist.api.models.query.PageQuery
 import ru.glassnekeep.anilist.api.models.query.RecommendationQuery
-import ru.glassnekeep.core.ContentType
 import ru.glassnekeep.core.di.AppDispatchers
 import ru.glassnekeep.core.di.AppScope
 import javax.inject.Inject
 
 @AppScope
-class RecommendationService @Inject constructor(
+class RecommendationRemoteService @Inject constructor(
     private val client: HttpClient,
     private val dispatchers: AppDispatchers,
     private val pageSizes: PageSizes,
@@ -46,7 +52,7 @@ class RecommendationService @Inject constructor(
             client.post {
                 contentType(contentType)
                 setBody(query)
-            }.body<Recommendation>()
+            }.body<ResponseSingleRaw>().mapToResponseSingle().data.recommendation!!
         }
     }
 
@@ -60,7 +66,7 @@ class RecommendationService @Inject constructor(
         }.body<ResponseSingleRaw>().mapToResponseSingle().data.recommendation!!
     }
 
-    suspend fun getRecommentdationList(recommendationQuery: RecommendationQuery): List<Recommendation> {
+    suspend fun getRecommendationList(recommendationQuery: RecommendationQuery): List<Recommendation> {
         val pageQuery = PageQuery(page = 1, perPage = pageSizes.large)
         val query = formGetRecommendationRequest(recommendationQuery, pageQuery)
         return withContext(dispatchers.io) {

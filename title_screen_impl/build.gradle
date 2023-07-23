@@ -60,5 +60,6 @@ dependencies {
     implementation project(":anilist")
     implementation project(":basic-ui")
     implementation project(":media-data")
+    implementation project(":character-data")
     api project(":title_screen")
 }

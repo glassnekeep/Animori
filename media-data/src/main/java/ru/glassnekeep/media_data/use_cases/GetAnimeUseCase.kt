@@ -48,6 +48,7 @@ class GetAnimeUseCase @Inject constructor(
                     bannerImage = bannerImage!!,
                     genres = genres!!,
                     tags = tags!!.map { it.name!! },
+                    characters = characters?.nodes ?: emptyList(),
                     isAdult = isAdult!!
                 )
             }

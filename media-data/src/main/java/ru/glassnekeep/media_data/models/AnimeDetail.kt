@@ -1,5 +1,7 @@
 package ru.glassnekeep.media_data.models
 
+import ru.glassnekeep.anilist.api.models.domain.character.Character
+
 data class AnimeDetail(
     val id: Int,
     val title: String,
@@ -24,7 +26,7 @@ data class AnimeDetail(
     val genres: List<String>,
     val tags: List<String>,
     //relations
-    //characters
+    val characters: List<Character>,
     //studios
     val isAdult: Boolean,
     //recommendations

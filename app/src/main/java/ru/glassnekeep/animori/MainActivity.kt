@@ -4,14 +4,12 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import ru.glassnekeep.animori.di.LocalAppProvider
+import ru.glassnekeep.character_data.LocalCharacterDataProvider
 import ru.glassnekeep.design_system.theme.AnimoriTheme
 import ru.glassnekeep.home_feature_impl.LocalHomeDataProvider
 import ru.glassnekeep.media_data.LocalMediaDataProvider
@@ -30,6 +28,7 @@ class MainActivity : ComponentActivity() {
                     LocalProfileDataProvider provides application.appProvider,
                     LocalUserDataProvider provides application.appProvider,
                     LocalMediaDataProvider provides application.appProvider,
+                    LocalCharacterDataProvider provides application.appProvider,
                     LocalHomeDataProvider provides application.appProvider,
                     LocalTitleDataProvider provides application.appProvider
                 ) {
@@ -41,7 +40,6 @@ class MainActivity : ComponentActivity() {
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StartScreen() {
     val bottomNavigationItems = listOf(
@@ -57,26 +55,5 @@ fun StartScreen() {
         }
     ) {
         Navigation(navController)
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    AnimoriTheme {
-        Greeting("Android")
-    }
-}
-
-@Preview
-@Composable
-fun HomeScreenPreview() {
-    AnimoriTheme {
-        //HomeScreen(navController = rememberNavController(), viewModel = HomeViewModel())
     }
 }

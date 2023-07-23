@@ -22,7 +22,9 @@ class HomeEntryImpl @Inject constructor(): HomeEntry() {
             composable(route = featureRoute, arguments) {
                 val mediaDataProvider = LocalMediaDataProvider.current
                 val viewModel = injectedViewModel {
-                    DaggerHomeComponent.factory().create(mediaDataProvider).homeScreenComponent().create().viewModel
+                    DaggerHomeComponent.factory().create(
+                        mediaDataProvider,
+                    ).homeScreenComponent().create().viewModel
                 }
                 HomeScreen(navController, viewModel, cardOnClick = { anime ->
                     val destination = destinations.find<TitleEntry>().destination(anime.id)

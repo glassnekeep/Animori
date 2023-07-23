@@ -12,7 +12,9 @@ import ru.glassnekeep.media_data.MediaDataProvider
 interface HomeComponent : HomeDataProvider {
     @Component.Factory
     interface Factory {
-        fun create(mediaDataProvider: MediaDataProvider): HomeComponent
+        fun create(
+            mediaDataProvider: MediaDataProvider,
+        ): HomeComponent
     }
 
     fun homeScreenComponent(): HomeScreenComponent.Factory

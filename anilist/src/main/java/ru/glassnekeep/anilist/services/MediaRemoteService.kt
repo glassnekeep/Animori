@@ -1,9 +1,11 @@
 package ru.glassnekeep.anilist.services
 
-import io.ktor.client.*
-import io.ktor.client.call.*
-import io.ktor.client.request.*
-import io.ktor.http.*
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
 import kotlinx.coroutines.withContext
 import ru.glassnekeep.anilist.api.AnilistRequest
 import ru.glassnekeep.anilist.api.MockedResponses
@@ -63,6 +65,8 @@ class MediaRemoteService @Inject constructor(
         return withContext(dispatchers.io) {
             client.post {
                 contentType(contentType)
+                val a = query
+                println(a)
                 setBody(query)
             }.body<ResponseListRaw>().mapToResponseList().data.page.media ?: emptyList()
         }

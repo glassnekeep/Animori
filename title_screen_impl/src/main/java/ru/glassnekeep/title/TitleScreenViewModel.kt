@@ -49,6 +49,10 @@ class TitleScreenViewModel @Inject constructor(
         }
     }
 
+    private fun loadCharacters() {
+
+    }
+
     fun reduce(state: TitleState, event: Event) {
         when (state) {
             is TitleState.Loading -> {

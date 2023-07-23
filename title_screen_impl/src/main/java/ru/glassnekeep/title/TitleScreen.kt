@@ -2,6 +2,7 @@ package ru.glassnekeep.title
 
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Star
@@ -22,16 +23,22 @@ import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import androidx.constraintlayout.compose.ExperimentalMotionApi
 import androidx.constraintlayout.compose.MotionLayout
+import androidx.navigation.NavController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
+import ru.glassnekeep.basic_ui.CharacterCard
 import ru.glassnekeep.basic_ui.ExpandingText
 import ru.glassnekeep.design_system.theme.Dimens
 import ru.glassnekeep.design_system.theme.Typography
 import ru.glassnekeep.media_data.models.AnimeDetail
 
 @Composable
-fun TitleScreen(viewModel: TitleScreenViewModel, modifier: Modifier = Modifier) {
-    CollapsableToolbar(viewModel)
+fun TitleScreen(
+    navController: NavController,
+    viewModel: TitleScreenViewModel,
+    modifier: Modifier = Modifier
+) {
+    CollapsableToolbar(navController, viewModel)
 }
 
 @OptIn(ExperimentalMotionApi::class, ExperimentalGlideComposeApi::class)
@@ -79,13 +86,13 @@ enum class SwipingStates {
 }
 
 @Composable
-fun CollapsableToolbar(viewModel: TitleScreenViewModel) {
+fun CollapsableToolbar(navController: NavController, viewModel: TitleScreenViewModel) {
     val state = viewModel.state.collectAsState().value
     Scaffold(
         content = {
             when (state) {
                 is TitleScreenViewModel.TitleState.Data -> {
-                    DataState(state.data)
+                    DataState(navController, state.data)
                 }
                 is TitleScreenViewModel.TitleState.Error -> {
 
@@ -117,6 +124,7 @@ private fun LoadingState() {
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun DataState(
+    navController: NavController,
     anime: AnimeDetail,
 ) {
     val swipingState = rememberSwipeableState(initialValue = SwipingStates.EXPANDED)
@@ -187,6 +195,21 @@ private fun DataState(
                             text = anime.description,
                             maxLines = TextParams.MAX_LINES_DESCRIPTION
                         )
+                        LazyRow(
+                            modifier = Modifier.fillMaxWidth(),
+                            content = {
+                                anime.characters.forEach { character ->
+                                    item {
+                                        CharacterCard(
+                                            navController = navController,
+                                            destination = "",
+                                            imageUrl = character.image?.medium ?: character.image!!.large!!,
+                                            name = character.name?.userPreferred ?: "",
+                                            cardOnClick = {  }
+                                        )
+                                    }
+                                }
+                            })
                     }
                 }
             }
