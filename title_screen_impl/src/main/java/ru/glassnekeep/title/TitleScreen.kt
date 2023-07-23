@@ -182,14 +182,6 @@ private fun DataState(
                                 text = Texts.RATING
                             )
                         }
-//                        Text(
-//                            textAlign = TextAlign.Left,
-//                            style = Typography.bodySmall,
-//                            modifier = Modifier,
-//                            text = anime.description,
-//                            //maxLines = TextParams.MAX_LINES_DESCRIPTION,
-//                            overflow = TextOverflow.Ellipsis,
-//                        )
                         ExpandingText(
                             modifier = Modifier,
                             text = anime.description,
