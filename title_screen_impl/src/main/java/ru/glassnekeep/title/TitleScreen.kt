@@ -91,16 +91,16 @@ fun CollapsableToolbar(navController: NavController, viewModel: TitleScreenViewM
     Scaffold(
         content = {
             when (state) {
-                is TitleScreenViewModel.TitleState.Data -> {
+                is TitleScreenViewModel.TitleScreenState.Data -> {
                     DataState(navController, state.data)
                 }
-                is TitleScreenViewModel.TitleState.Error -> {
+                is TitleScreenViewModel.TitleScreenState.Error -> {
 
                 }
-                is TitleScreenViewModel.TitleState.Loading -> {
+                is TitleScreenViewModel.TitleScreenState.Loading -> {
                     LoadingState()
                 }
-                is TitleScreenViewModel.TitleState.NotFound -> {
+                is TitleScreenViewModel.TitleScreenState.NotFound -> {
 
                 }
             }

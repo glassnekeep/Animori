@@ -18,12 +18,12 @@ fun FuzzyDate.formFormattedDate(): String {
     val string = buildString {
         append(year)
         append("-")
-        if (month != null && month!! > 9) append(month) else {
+        if (month != null && month > 9) append(month) else {
             append(0)
             append(month)
         }
         append("-")
-        if (day != null && day!! > 9) append(day) else {
+        if (day != null && day > 9) append(day) else {
             append(0)
             append(day)
         }

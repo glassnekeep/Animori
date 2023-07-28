@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 class TitleEntryImpl @Inject constructor() : TitleEntry() {
 
-    val rootRoute = "@movie-details"
+    private val rootRoute = "@movie-details"
 
     override fun NavGraphBuilder.navigation(
         navController: NavHostController,

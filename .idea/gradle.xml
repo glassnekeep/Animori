@@ -16,6 +16,8 @@
             <option value="$PROJECT_DIR$/auth" />
             <option value="$PROJECT_DIR$/basic-ui" />
             <option value="$PROJECT_DIR$/character-data" />
+            <option value="$PROJECT_DIR$/character-screen" />
+            <option value="$PROJECT_DIR$/character-screen-impl" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/design-system" />
             <option value="$PROJECT_DIR$/home-feature" />
