@@ -7,6 +7,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.glassnekeep.core.logger.Logger
+import ru.glassnekeep.core.mvi.Event
+import ru.glassnekeep.core.mvi.State
 import ru.glassnekeep.media_data.models.AnimeDetail
 import ru.glassnekeep.media_data.use_cases.GetAnimeUseCase
 import ru.glassnekeep.title.di.MediaId
@@ -16,18 +18,18 @@ class TitleScreenViewModel @Inject constructor(
     private val getAnimeUseCase: GetAnimeUseCase,
     @MediaId private val mediaId: Int
 ): ViewModel() {
-    internal sealed class TitleScreenState {
+    internal sealed class TitleScreenState: State() {
         object Loading: TitleScreenState()
         data class Data(val data: AnimeDetail): TitleScreenState()
         object NotFound: TitleScreenState()
         data class Error(val exception: Throwable, val message: String): TitleScreenState()
     }
 
-    private sealed class Event {
-        object Load: Event()
-        object Refresh: Event()
-        object ShowDetails: Event()
-        class NavigateToCharacter(id: Int): Event()
+    private sealed class TitleEvent: Event() {
+        object Load: TitleEvent()
+        object Refresh: TitleEvent()
+        object ShowDetails: TitleEvent()
+        class NavigateToCharacter(id: Int): TitleEvent()
     }
 
     private var _state = MutableStateFlow<TitleScreenState>(TitleScreenState.Loading)
@@ -55,27 +57,27 @@ class TitleScreenViewModel @Inject constructor(
 
     }
 
-    private fun reduce(state: TitleScreenState, event: Event) {
+    private fun reduce(state: TitleScreenState, event: TitleEvent) {
         when (state) {
             is TitleScreenState.Loading -> {
-                if (event is Event.Refresh) {
+                if (event is TitleEvent.Refresh) {
 
                 }
             }
             is TitleScreenState.Data -> {
-                if (event is Event.Refresh) {
+                if (event is TitleEvent.Refresh) {
                     loadMedia()
-                } else if (event is Event.ShowDetails) {
+                } else if (event is TitleEvent.ShowDetails) {
 
                 }
             }
             is TitleScreenState.Error -> {
-                if (event is Event.Refresh) {
+                if (event is TitleEvent.Refresh) {
                     loadMedia()
                 }
             }
             is TitleScreenState.NotFound -> {
-                if (event is Event.Refresh) {
+                if (event is TitleEvent.Refresh) {
                     loadMedia()
                 }
             }

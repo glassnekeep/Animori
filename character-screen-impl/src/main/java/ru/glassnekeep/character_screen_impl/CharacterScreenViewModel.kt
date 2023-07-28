@@ -12,6 +12,8 @@ import ru.glassnekeep.character_data.models.CharacterDetail
 import ru.glassnekeep.character_data.use_cases.GetCharacterUseCase
 import ru.glassnekeep.character_screen_impl.di.CharacterId
 import ru.glassnekeep.core.logger.Logger
+import ru.glassnekeep.core.mvi.Event
+import ru.glassnekeep.core.mvi.State
 import javax.inject.Inject
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -19,17 +21,17 @@ class CharacterScreenViewModel @Inject constructor(
     private val getCharacterUseCase: GetCharacterUseCase,
     @CharacterId private val characterId: Int
 ): ViewModel() {
-    internal sealed class CharacterScreenState {
+    internal sealed class CharacterScreenState: State() {
         object Loading: CharacterScreenState()
         data class Data(val data: CharacterDetail): CharacterScreenState()
         object NotFount: CharacterScreenState()
         data class Error(val exception: Throwable, val message: String): CharacterScreenState()
     }
 
-    private sealed class Event {
-        object Load: Event()
-        object Refresh: Event()
-        class NavigateToMedia(id: Int): Event()
+    private sealed class CharacterEvent: Event() {
+        object Load: CharacterEvent()
+        object Refresh: CharacterEvent()
+        class NavigateToMedia(id: Int): CharacterEvent()
     }
 
     private var _state = MutableStateFlow<CharacterScreenState>(CharacterScreenState.Loading)
@@ -53,27 +55,27 @@ class CharacterScreenViewModel @Inject constructor(
         }
     }
 
-    private fun reduce(state: CharacterScreenState, event: Event) {
+    private fun reduce(state: CharacterScreenState, characterEvent: CharacterEvent) {
         when (state) {
             is CharacterScreenState.Loading -> {
-                if (event is Event.Refresh) {
+                if (characterEvent is CharacterEvent.Refresh) {
 
                 }
             }
             is CharacterScreenState.Data -> {
-                if (event is Event.Refresh) {
+                if (characterEvent is CharacterEvent.Refresh) {
                     loadCharacter()
                 } else {
 
                 }
             }
             is CharacterScreenState.Error -> {
-                if (event is Event.Refresh) {
+                if (characterEvent is CharacterEvent.Refresh) {
 
                 }
             }
             is CharacterScreenState.NotFount -> {
-                if (event is Event.Refresh) {
+                if (characterEvent is CharacterEvent.Refresh) {
                     loadCharacter()
                 }
             }
