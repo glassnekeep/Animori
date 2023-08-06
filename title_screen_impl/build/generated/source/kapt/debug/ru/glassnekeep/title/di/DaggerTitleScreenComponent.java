@@ -3,8 +3,6 @@ package ru.glassnekeep.title.di;
 
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Preconditions;
-import ru.glassnekeep.character_data.CharacterDataProvider;
-import ru.glassnekeep.character_data.repository.CharacterRepository;
 import ru.glassnekeep.core.di.AppDispatchers;
 import ru.glassnekeep.media_data.MediaDataProvider;
 import ru.glassnekeep.media_data.repository.MediaRepository;
@@ -27,28 +25,23 @@ public final class DaggerTitleScreenComponent {
 
   private static final class Factory implements TitleScreenComponent.Factory {
     @Override
-    public TitleScreenComponent create(MediaDataProvider mediaDataProvider,
-        CharacterDataProvider characterDataProvider, int mediaId) {
+    public TitleScreenComponent create(MediaDataProvider mediaDataProvider, int mediaId) {
       Preconditions.checkNotNull(mediaDataProvider);
-      Preconditions.checkNotNull(characterDataProvider);
       Preconditions.checkNotNull(mediaId);
-      return new TitleScreenComponentImpl(mediaDataProvider, characterDataProvider, mediaId);
+      return new TitleScreenComponentImpl(mediaDataProvider, mediaId);
     }
   }
 
   private static final class TitleScreenComponentImpl implements TitleScreenComponent {
     private final MediaDataProvider mediaDataProvider;
 
-    private final CharacterDataProvider characterDataProvider;
-
     private final Integer mediaId;
 
     private final TitleScreenComponentImpl titleScreenComponentImpl = this;
 
     private TitleScreenComponentImpl(MediaDataProvider mediaDataProviderParam,
-        CharacterDataProvider characterDataProviderParam, Integer mediaIdParam) {
+        Integer mediaIdParam) {
       this.mediaDataProvider = mediaDataProviderParam;
-      this.characterDataProvider = characterDataProviderParam;
       this.mediaId = mediaIdParam;
 
     }
@@ -71,11 +64,6 @@ public final class DaggerTitleScreenComponent {
     @Override
     public AppDispatchers getDispatchers() {
       return Preconditions.checkNotNullFromComponent(mediaDataProvider.getDispatchers());
-    }
-
-    @Override
-    public CharacterRepository getCharacterRepository() {
-      return Preconditions.checkNotNullFromComponent(characterDataProvider.getCharacterRepository());
     }
 
     @Override

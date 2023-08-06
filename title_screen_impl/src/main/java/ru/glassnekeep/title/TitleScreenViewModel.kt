@@ -18,14 +18,14 @@ class TitleScreenViewModel @Inject constructor(
     private val getAnimeUseCase: GetAnimeUseCase,
     @MediaId private val mediaId: Int
 ): ViewModel() {
-    internal sealed class TitleScreenState: State() {
+    internal sealed class TitleScreenState: State {
         object Loading: TitleScreenState()
         data class Data(val data: AnimeDetail): TitleScreenState()
         object NotFound: TitleScreenState()
         data class Error(val exception: Throwable, val message: String): TitleScreenState()
     }
 
-    private sealed class TitleEvent: Event() {
+    private sealed class TitleEvent: Event {
         object Load: TitleEvent()
         object Refresh: TitleEvent()
         object ShowDetails: TitleEvent()
@@ -51,10 +51,6 @@ class TitleScreenViewModel @Inject constructor(
                 _state.value = TitleScreenState.Data(it)
             }
         }
-    }
-
-    private fun loadCharacters() {
-
     }
 
     private fun reduce(state: TitleScreenState, event: TitleEvent) {

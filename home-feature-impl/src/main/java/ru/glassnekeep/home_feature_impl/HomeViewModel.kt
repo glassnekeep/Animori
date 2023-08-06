@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import ru.glassnekeep.core.mvi.State
 import ru.glassnekeep.media_data.models.Anime
 import ru.glassnekeep.media_data.use_cases.GetAnimeListUseCase
 import javax.inject.Inject
@@ -13,7 +14,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val getAnimeListUseCase: GetAnimeListUseCase
 ) : ViewModel() {
-    sealed class HomeState {
+    sealed class HomeState: State {
         object Loading: HomeState()
         data class Data(val data: List<Anime>) : HomeState()
     }

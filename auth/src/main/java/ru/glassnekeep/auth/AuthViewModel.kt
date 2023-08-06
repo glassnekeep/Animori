@@ -7,13 +7,15 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import ru.glassnekeep.core.mvi.State
 import ru.glassnekeep.user_data.models.User
 import javax.inject.Inject
 
 class AuthViewModel @Inject constructor(
     private val registerUserUseCase: RegisterUserUseCase
 ): ViewModel() {
-    sealed class AuthState {
+    sealed class AuthState: State {
+        object Idle: AuthState()
         object Loading: AuthState()
         object Success: AuthState()
         data class Error(val message: String): AuthState()
