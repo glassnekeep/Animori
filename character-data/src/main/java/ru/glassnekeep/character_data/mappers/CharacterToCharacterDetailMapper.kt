@@ -5,7 +5,7 @@ import androidx.annotation.RequiresApi
 import ru.glassnekeep.anilist.api.models.domain.character.Character
 import ru.glassnekeep.anilist.api.models.domain.formFormattedDate
 import ru.glassnekeep.character_data.models.CharacterDetail
-import ru.glassnekeep.media_data.MediaToAnimeDetailMapper
+import ru.glassnekeep.                                                                                                                                                                                                                                  media_data.MediaToAnimeDetailMapper
 
 object CharacterToCharacterDetailMapper {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -13,6 +13,7 @@ object CharacterToCharacterDetailMapper {
         return with(character) {
             CharacterDetail(
                 id = id!!,
+                image = image?.large ?: image?.medium ?: "",
                 firstName = name?.first,
                 middleName = name?.middle,
                 lastName = name?.last,

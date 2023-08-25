@@ -7,7 +7,6 @@ import ru.glassnekeep.user_data.UserDataProvider
 
 @AppScope
 @Component(
-    //dependencies = [NetworkComponent::class],
     modules = [UserDataModule::class, CoreModule::class]
 )
 interface UserDataComponent: UserDataProvider {

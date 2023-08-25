@@ -4,7 +4,9 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import ru.glassnekeep.CharacterEntry
 import ru.glassnekeep.core.Destinations
+import ru.glassnekeep.core.find
 import ru.glassnekeep.core.injectedViewModel
 import ru.glassnekeep.media_data.LocalMediaDataProvider
 import ru.glassnekeep.title.di.DaggerTitleScreenComponent
@@ -29,7 +31,10 @@ class TitleEntryImpl @Inject constructor() : TitleEntry() {
                         mediaId ?: 0
                     ).viewModel
                 }
-                TitleScreen(navController, viewModel)
+                TitleScreen(navController, viewModel, cardOnClick = { id ->
+                    val destination = destinations.find<CharacterEntry>().destination(id)
+                    navController.navigate(destination)
+                })
             }
         }
     }

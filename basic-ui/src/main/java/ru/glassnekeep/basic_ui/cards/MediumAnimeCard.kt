@@ -1,4 +1,4 @@
-package ru.glassnekeep.basic_ui
+package ru.glassnekeep.basic_ui.cards
 
 import androidx.compose.runtime.Composable
 

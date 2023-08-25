@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace 'ru.glassnekeep.title'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 24
-        targetSdk 33
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-    def dagger_version = '2.44'
+    def dagger_version = '2.47'
 
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -61,5 +61,6 @@ dependencies {
     implementation project(":basic-ui")
     implementation project(":media-data")
     implementation project(":character-data")
+    implementation project(":character-screen")
     api project(":title_screen")
 }

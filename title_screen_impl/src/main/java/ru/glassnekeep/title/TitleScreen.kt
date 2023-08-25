@@ -1,15 +1,29 @@
 package ru.glassnekeep.title
 
 import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.FractionalThreshold
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material.rememberSwipeableState
+import androidx.compose.material.swipeable
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,8 +40,8 @@ import androidx.constraintlayout.compose.MotionLayout
 import androidx.navigation.NavController
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import ru.glassnekeep.basic_ui.CharacterCard
-import ru.glassnekeep.basic_ui.ExpandingText
+import ru.glassnekeep.basic_ui.cards.CharacterCard
+import ru.glassnekeep.basic_ui.cards.ExpandingText
 import ru.glassnekeep.design_system.theme.Dimens
 import ru.glassnekeep.design_system.theme.Typography
 import ru.glassnekeep.media_data.models.AnimeDetail
@@ -36,9 +50,10 @@ import ru.glassnekeep.media_data.models.AnimeDetail
 fun TitleScreen(
     navController: NavController,
     viewModel: TitleScreenViewModel,
+    cardOnClick: (Int) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
-    CollapsableToolbar(navController, viewModel)
+    CollapsableToolbar(navController, viewModel, cardOnClick)
 }
 
 @OptIn(ExperimentalMotionApi::class, ExperimentalGlideComposeApi::class)
@@ -86,13 +101,17 @@ enum class SwipingStates {
 }
 
 @Composable
-fun CollapsableToolbar(navController: NavController, viewModel: TitleScreenViewModel) {
+fun CollapsableToolbar(
+    navController: NavController,
+    viewModel: TitleScreenViewModel,
+    cardOnClick: (Int) -> Unit
+) {
     val state = viewModel.state.collectAsState().value
     Scaffold(
         content = {
             when (state) {
                 is TitleScreenViewModel.TitleScreenState.Data -> {
-                    DataState(navController, state.data)
+                    DataState(navController, state.data, cardOnClick)
                 }
                 is TitleScreenViewModel.TitleScreenState.Error -> {
 
@@ -126,6 +145,7 @@ private fun LoadingState() {
 private fun DataState(
     navController: NavController,
     anime: AnimeDetail,
+    cardOnClick: (Int) -> Unit
 ) {
     val swipingState = rememberSwipeableState(initialValue = SwipingStates.EXPANDED)
     BoxWithConstraints(
@@ -188,20 +208,20 @@ private fun DataState(
                             maxLines = TextParams.MAX_LINES_DESCRIPTION
                         )
                         LazyRow(
-                            modifier = Modifier.fillMaxWidth(),
-                            content = {
-                                anime.characters.forEach { character ->
-                                    item {
-                                        CharacterCard(
-                                            navController = navController,
-                                            destination = "",
-                                            imageUrl = character.image?.medium ?: character.image!!.large!!,
-                                            name = character.name?.userPreferred ?: "",
-                                            cardOnClick = {  }
-                                        )
-                                    }
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            anime.characters.forEach { character ->
+                                item {
+                                    CharacterCard(
+                                        navController = navController,
+                                        destination = "",
+                                        imageUrl = character.image,
+                                        name = character.name,
+                                        cardOnClick = { cardOnClick(character.id) }
+                                    )
                                 }
-                            })
+                            }
+                        }
                     }
                 }
             }

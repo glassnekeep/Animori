@@ -1,4 +1,4 @@
-package ru.glassnekeep.basic_ui
+package ru.glassnekeep.basic_ui.cards
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

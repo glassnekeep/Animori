@@ -13,7 +13,9 @@ import ru.glassnekeep.title.TitleScreenViewModel;
 @DaggerGenerated
 @SuppressWarnings({
     "unchecked",
-    "rawtypes"
+    "rawtypes",
+    "KotlinInternal",
+    "KotlinInternalInJava"
 })
 public final class DaggerTitleScreenComponent {
   private DaggerTitleScreenComponent() {

@@ -3,6 +3,7 @@ package ru.glassnekeep.media_data
 import android.os.Build
 import ru.glassnekeep.anilist.api.models.domain.formFormattedDate
 import ru.glassnekeep.anilist.api.models.domain.media.Media
+import ru.glassnekeep.character_data.mappers.CharacterToCharacterMapper
 import ru.glassnekeep.media_data.models.AnimeDetail
 import ru.glassnekeep.media_data.use_cases.toLowerCaseWithFirstCapitalLetter
 
@@ -36,7 +37,7 @@ object MediaToAnimeDetailMapper {
                 bannerImage = bannerImage!!,
                 genres = genres!!,
                 tags = tags!!.map { it.name!! },
-                characters = characters?.nodes ?: emptyList(),
+                characters = characters?.nodes?.map(CharacterToCharacterMapper::map) ?: emptyList(),
                 isAdult = isAdult!!
             )
         }

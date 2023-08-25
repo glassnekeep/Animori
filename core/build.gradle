@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KaptGenerateStubs
+
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
@@ -6,11 +8,11 @@ plugins {
 
 android {
     namespace 'ru.glassnekeep.core'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         minSdk 24
-        targetSdk 33
+        targetSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -36,11 +38,16 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    tasks.withType(KaptGenerateStubs).configureEach {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
 }
 
 dependencies {
     implementation 'androidx.core:core-ktx:1.10.0'
-    def dagger_version = "2.44"
+    def dagger_version = "2.47"
     def lifecycle_version = "2.6.1"
     def material_version = "1.1.0-beta02"
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -57,7 +64,6 @@ dependencies {
 
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     api 'androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1'
-//    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     api 'androidx.compose.material:material-icons-core:1.4.1'
     api "androidx.compose.material3:material3:$material_version"

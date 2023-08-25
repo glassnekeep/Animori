@@ -1,6 +1,6 @@
 package ru.glassnekeep.media_data.models
 
-import ru.glassnekeep.anilist.api.models.domain.character.Character
+import ru.glassnekeep.character_data.models.Character
 
 data class AnimeDetail(
     val id: Int,

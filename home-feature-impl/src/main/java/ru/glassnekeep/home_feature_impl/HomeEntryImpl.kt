@@ -28,7 +28,6 @@ class HomeEntryImpl @Inject constructor(): HomeEntry() {
                 }
                 HomeScreen(navController, viewModel, cardOnClick = { anime ->
                     val destination = destinations.find<TitleEntry>().destination(anime.id)
-                    println(destination)
                     navController.navigate(destination)
                 })
             }

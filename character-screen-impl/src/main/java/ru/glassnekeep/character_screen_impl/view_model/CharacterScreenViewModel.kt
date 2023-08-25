@@ -1,7 +1,5 @@
 package ru.glassnekeep.character_screen_impl.view_model
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -10,7 +8,6 @@ import ru.glassnekeep.character_screen_impl.di.CharacterId
 import ru.glassnekeep.core.mvi.StateReducers
 import javax.inject.Inject
 
-@RequiresApi(Build.VERSION_CODES.O)
 class CharacterScreenViewModel @Inject constructor(
     private val getCharacterUseCase: GetCharacterUseCase,
     @CharacterId private val characterId: Int
